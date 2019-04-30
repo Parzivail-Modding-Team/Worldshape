@@ -16,8 +16,6 @@ namespace Worldshape
 
             var structure = ScarifStructure.Load(args[0]);
 
-            Console.ReadKey();
-
             return 0;
         }
     }
