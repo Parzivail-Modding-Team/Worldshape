@@ -48,7 +48,9 @@
     <Compile Include="Core\BlockPos.cs" />
     <Compile Include="Core\Entity.cs" />
     <Compile Include="Core\Structure.cs" />
+    <Compile Include="Core\StructureTypeRegistry.cs" />
     <Compile Include="Core\TileEntity.cs" />
+    <Compile Include="Loader\StructureLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Loader\Scarif\BlockFlags.cs" />
     <Compile Include="Loader\Scarif\BlockFlagsExtensions.cs" />
