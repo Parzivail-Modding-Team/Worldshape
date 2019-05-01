@@ -1,4 +1,9 @@
 ## Key
+### Binary Data
+	<Struct Name>
+		<Data type> <VariableName>
+		<Data Type>{FlagsVariable&0b<Flag position>}
+### NBT Data
 	&: <Root tag type>
 		<Key>: <Value type>=<Accepted values>!<Optional deprecation note>#<Optional comment>
 			[]: <List entry type>
@@ -6,6 +11,33 @@
 		?<Optional key>: <Value type>
 		<Another key>: <Value type>
 			$: <All children are of this type>
+
+## SCARIF structures (brotli'd binary data, Parzi's Mods)
+	TranslationMapEntry
+		i16 Key # Numeric block ID
+		s Value # Namespaced block name
+
+	Block
+		b BlockXZ # upper nibble is X, lower is Z
+		b BlockY
+		i16 BlockID
+		b BlockFlags
+		b{BlockFlags&0b1} BlockMetadata
+		tagCompound{BlockFlags&0b10} BlockData
+
+	ChunkDiff
+		i32 ChunkX
+		i32 ChunkZ
+		i32 NumBlocks
+		Block*NumBlocks DiffMap
+
+	Root
+		b Magic # "SCRF"
+		i32 Version # 1
+		i32 NumChunks # Number of chunks defined in the file
+		i32 TranslationMapSize # Number of entries in the translation map
+		TranslationMapEntry*TranslationMapSize BlockTranslationMap
+		ChunkDiff*NumChunks ChunkDiffs
 
 ## Schematic structures (gzipped NBT, various mods)
 	&: TAG_Compound
@@ -32,6 +64,21 @@
 		?WEOffsetX: TAG_Short#Offset of the structure in local space
 		?WEOffsetY: TAG_Short#Offset of the structure in local space
 		?WEOffsetZ: TAG_Short#Offset of the structure in local space
+		?itemStackVersion: TAG_Byte=[17, 18]#MCEdit-2 only, 17 for numeric item IDs, 18 for namespaced strings
+		?BlockIDs: TAG_Compound
+			$: TAG_String#All children are <numeric block ID as string>=<namespaced block name>
+		?ItemIDs: TAG_Compound#Only provided if itemStackversion is 17
+			$: TAG_String#All children are <numeric block ID as string>=<namespaced block name>
+		?TileTicks: TAG_List#MCEdit-Unified only, list of queued block updates
+			[]: TAG_Compound
+				i: TAG_String#Block ID
+				t: TAG_Int#Ticks until processing occurs (negative means overdue)
+				p: TAG_Int#Processing priority, lower is sooner
+				x: TAG_Int
+				y: TAG_Int
+				z: TAG_Int
+		?Biomes: TAG_Byte_Array#MCEdit-Unified only, a byte array containing all biomes in the schematic
+
 
 ## Structure Block structures (gzipped NBT, Minecraft)
 	&: TAG_Compound
