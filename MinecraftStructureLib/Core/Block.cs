@@ -2,13 +2,13 @@
 
 namespace MinecraftStructureLib.Core
 {
-	public struct Block
+	public class Block
 	{
 		public readonly string Id;
 		public readonly int Metadata;
-		public readonly TagNodeCompound Data;
+		public readonly NbtTree Data;
 
-		public Block(string id, int metadata = 0, TagNodeCompound data = null)
+		public Block(string id, int metadata = 0, NbtTree data = null)
 		{
 			Id = id;
 			Metadata = metadata;

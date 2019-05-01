@@ -50,7 +50,19 @@
     <Compile Include="Core\Structure.cs" />
     <Compile Include="Core\TileEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scarif\BlockFlags.cs" />
+    <Compile Include="Scarif\BlockFlagsExtensions.cs" />
+    <Compile Include="Scarif\ChunkBounds.cs" />
+    <Compile Include="Scarif\ChunkPosition.cs" />
+    <Compile Include="Scarif\DiffMap.cs" />
+    <Compile Include="Scarif\TranslationMap.cs" />
+    <Compile Include="Scarif\ScarifStructure.cs" />
     <Compile Include="Schematic\Schematic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Brotli.NET">
+      <Version>1.0.19</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

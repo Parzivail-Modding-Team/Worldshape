@@ -7,7 +7,7 @@ using Substrate.Nbt;
 
 namespace MinecraftStructureLib.Core
 {
-	class TileEntity
+	public class TileEntity
 	{
 		public readonly BlockPos Position;
 		public readonly TagNodeCompound Data;
