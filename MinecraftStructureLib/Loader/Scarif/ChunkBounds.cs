@@ -1,7 +1,6 @@
-﻿using System;
-using Substrate;
+﻿using Substrate;
 
-namespace MinecraftStructureLib.Scarif
+namespace MinecraftStructureLib.Loader.Scarif
 {
     public class ChunkBounds
     {

@@ -2,7 +2,7 @@
 using Substrate.Core;
 using Substrate.Nbt;
 
-namespace MinecraftStructureLib.Scarif
+namespace MinecraftStructureLib.Loader.Scarif
 {
     public class TranslationMap : Dictionary<short, string>
     {

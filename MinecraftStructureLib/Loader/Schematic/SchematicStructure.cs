@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MinecraftStructureLib.Core;
 using Substrate.Core;
 using Substrate.Nbt;
 
-namespace MinecraftStructureLib.Schematic
+namespace MinecraftStructureLib.Loader.Schematic
 {
-	public class Schematic : Structure
+	public class SchematicStructure : Structure
 	{
 		public int Length { get; private set; }
 		public int Width { get; private set; }

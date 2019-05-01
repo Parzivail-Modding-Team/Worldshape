@@ -49,12 +49,12 @@ namespace MinecraftStructureLib.Core
 
         public static bool operator ==(Entity left, Entity right)
         {
-            return left.Equals(right);
+            return left != null && left.Equals(right);
         }
 
         public static bool operator !=(Entity left, Entity right)
         {
-            return !left.Equals(right);
+            return left != null && !left.Equals(right);
         }
     }
 }

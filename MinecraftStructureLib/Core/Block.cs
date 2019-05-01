@@ -36,12 +36,12 @@ namespace MinecraftStructureLib.Core
 
 		public static bool operator ==(Block left, Block right)
 		{
-			return left.Equals(right);
+			return left != null && left.Equals(right);
 		}
 
 		public static bool operator !=(Block left, Block right)
 		{
-			return !left.Equals(right);
+			return left != null && !left.Equals(right);
 		}
 	}
 }

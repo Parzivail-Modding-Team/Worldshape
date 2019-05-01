@@ -1,6 +1,6 @@
 ﻿using MinecraftStructureLib.Core;
 
-namespace MinecraftStructureLib.Scarif
+namespace MinecraftStructureLib.Loader.Scarif
 {
     public static class BlockFlagsExtensions
     {

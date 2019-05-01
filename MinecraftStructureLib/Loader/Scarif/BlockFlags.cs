@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MinecraftStructureLib.Scarif
+namespace MinecraftStructureLib.Loader.Scarif
 {
     [Flags]
     public enum BlockFlags

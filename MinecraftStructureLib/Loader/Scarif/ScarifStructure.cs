@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
-using Brotli;
 using MinecraftStructureLib.Core;
 using Substrate.Nbt;
 
-namespace MinecraftStructureLib.Scarif
+namespace MinecraftStructureLib.Loader.Scarif
 {
     public class ScarifStructure : Structure
     {

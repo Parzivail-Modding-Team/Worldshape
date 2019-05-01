@@ -1,4 +1,4 @@
-﻿namespace MinecraftStructureLib.Scarif
+﻿namespace MinecraftStructureLib.Loader.Scarif
 {
     public class ChunkPosition
     {

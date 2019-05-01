@@ -50,14 +50,14 @@
     <Compile Include="Core\Structure.cs" />
     <Compile Include="Core\TileEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scarif\BlockFlags.cs" />
-    <Compile Include="Scarif\BlockFlagsExtensions.cs" />
-    <Compile Include="Scarif\ChunkBounds.cs" />
-    <Compile Include="Scarif\ChunkPosition.cs" />
-    <Compile Include="Scarif\DiffMap.cs" />
-    <Compile Include="Scarif\TranslationMap.cs" />
-    <Compile Include="Scarif\ScarifStructure.cs" />
-    <Compile Include="Schematic\Schematic.cs" />
+    <Compile Include="Loader\Scarif\BlockFlags.cs" />
+    <Compile Include="Loader\Scarif\BlockFlagsExtensions.cs" />
+    <Compile Include="Loader\Scarif\ChunkBounds.cs" />
+    <Compile Include="Loader\Scarif\ChunkPosition.cs" />
+    <Compile Include="Loader\Scarif\DiffMap.cs" />
+    <Compile Include="Loader\Scarif\TranslationMap.cs" />
+    <Compile Include="Loader\Scarif\ScarifStructure.cs" />
+    <Compile Include="Loader\Schematic\SchematicStructure.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Brotli.NET">
