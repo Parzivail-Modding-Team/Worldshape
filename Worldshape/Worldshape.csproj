@@ -50,9 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="ScarifLib">
-      <Version>1.0.2</Version>
-    </PackageReference>
+    <ProjectReference Include="..\MinecraftStructureLib\MinecraftStructureLib.csproj">
+      <Project>{D2AB400D-1124-4CCA-AA86-24CDD3DEEF00}</Project>
+      <Name>MinecraftStructureLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

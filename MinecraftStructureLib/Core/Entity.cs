@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Substrate.Nbt;
+﻿using Substrate.Nbt;
 
 namespace MinecraftStructureLib.Core
 {
-	public class Entity
-	{
+    public class Entity
+    {
+        public readonly TagNodeCompound Data;
         public readonly double X;
         public readonly double Y;
         public readonly double Z;
-        public readonly TagNodeCompound Data;
 
         public Entity(double x, double y, double z, TagNodeCompound data)
         {

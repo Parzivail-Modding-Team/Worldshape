@@ -4,14 +4,14 @@ namespace MinecraftStructureLib.Loader.Scarif
 {
     public class ChunkBounds
     {
-        public readonly int MinX;
         public readonly int MaxX;
+        public readonly int MaxY;
+        public readonly int MaxZ;
+        public readonly int MinX;
 
         public readonly int MinY;
-        public readonly int MaxY;
 
         public readonly int MinZ;
-        public readonly int MaxZ;
 
         public ChunkBounds(int minX, int minY, int minZ, int maxX, int maxY, int maxZ)
         {

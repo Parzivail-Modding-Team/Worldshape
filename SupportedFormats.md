@@ -48,7 +48,8 @@
 		Blocks: TAG_Byte_Array#index = (Y * length + Z) * width + X
 		?AddBlocks: TAG_Byte_Array#Each byte is two indices of Blocks, upper 4 bits is the upper 9-12 bits of the block at [i * 2], lower 4 is for the block at [i * 2 + 1]
 		?Add: TAG_Byte_Array!Used previously by Schematica#Each byte is the 8-16 bits of the block at [i]
-		?Data: TAG_Byte_Array#Each byte is the metadata of the block at [i]
+		?Metadata: TAG_Byte_Array#Each byte is the metadata of the block at [i]
+		?Data: TAG_Byte_Array#Alternate for Metadata
 		Entities: TAG_List
 			[]: TAG_Compound#TODO: Standard entity format
 		TileEntities: TAG_List

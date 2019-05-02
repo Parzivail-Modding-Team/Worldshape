@@ -1,48 +1,23 @@
 ﻿using System.Collections.Generic;
-using Substrate.Core;
-using Substrate.Nbt;
+using System.IO;
 
 namespace MinecraftStructureLib.Loader.Scarif
 {
     public class TranslationMap : Dictionary<short, string>
     {
-        public TranslationMap()
+        public short TranslateBlock(string id)
         {
+            foreach (var pair in this)
+                if (pair.Value == id)
+                    return pair.Key;
+            throw new IOException($"Unknown block ID found: {id}");
         }
 
-        public TranslationMap(Dictionary<short, string> nbtMap)
+        public string TranslateBlock(short id)
         {
-            foreach (var pair in nbtMap) Add(pair.Key, pair.Value);
-        }
-
-        public static TranslationMap Load(string filename)
-        {
-            var map = new TranslationMap();
-
-            var nf = new NBTFile(filename);
-
-            using (var nbtstr = nf.GetDataInputStream())
-            {
-                var tree = new NbtTree(nbtstr);
-
-                var root = tree.Root["map"];
-                var list = root.ToTagList();
-
-                foreach (var tag in list)
-                {
-                    var k = tag.ToTagCompound()["k"].ToTagString();
-                    var v = (short)tag.ToTagCompound()["v"].ToTagInt();
-                    if (!map.ContainsKey(v))
-                        map.Add(v, k);
-                }
-
-                return map;
-            }
-        }
-
-        public TranslationMap Clone()
-        {
-            return new TranslationMap(this);
+            if (TryGetValue(id, out var namespacedId))
+                return namespacedId;
+            throw new IOException($"Unknown block ID found: {id}");
         }
     }
 }
