@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Loader.Scarif;
 using Substrate.Core;
 using Substrate.Nbt;
 
@@ -30,9 +31,41 @@ namespace MinecraftStructureLib.Loader.Schematic
         /// <inheritdoc />
         public Structure Load(string filename)
         {
-            var inputSchematic = new NBTFile(filename);
-            var tag = new NbtTree(inputSchematic.GetDataInputStream()).Root;
+            var input = new NBTFile(filename);
+            var nbt = new NbtTree(input.GetDataInputStream()).Root;
 
+            var length = nbt["Length"].ToTagInt().Data;
+            var width = nbt["Width"].ToTagInt().Data;
+            var height = nbt["Height"].ToTagInt().Data;
+
+            var tiles = LoadTileEntities(nbt);
+            var blocks = LoadBlocks(nbt, length, width, tiles);
+            var entities = LoadEntities(nbt);
+            var palette = LoadPalette(nbt);
+
+            return new SchematicStructure(blocks, entities, palette, width, height, length);
+        }
+
+        private TranslationMap LoadPalette(TagNodeCompound tag)
+        {
+            var map = new TranslationMap();
+
+            if (tag.ContainsKey("SchematicaMapping")) // Schematica
+            {
+                foreach (var entry in tag["SchematicaMapping"].ToTagCompound())
+                    map.Add(entry.Value.ToTagShort().Data, entry.Key);
+            }
+            else if (tag.ContainsKey("BlockIDs")) // MCEdit2
+            {
+                foreach (var entry in tag["BlockIDs"].ToTagCompound())
+                    map.Add(short.Parse(entry.Key), entry.Value.ToTagString().Data);
+            }
+
+            return map;
+        }
+
+        private Block[] LoadBlocks(TagNodeCompound tag, int length, int width, Dictionary<BlockPos, TileEntity> tiles)
+        {
             var bLower = tag["Blocks"].ToTagByteArray().Data;
             var bUpper = new byte[(bLower.Length >> 1) + 1];
 
@@ -47,9 +80,9 @@ namespace MinecraftStructureLib.Loader.Schematic
                 for (var i = 0; i < bLower.Length; i++)
                 {
                     if ((i & 1) == 1)
-                        bUpper[i >> 1] |= (byte)(add[i] & 0x0F);
+                        bUpper[i >> 1] |= (byte) (add[i] & 0x0F);
                     else
-                        bUpper[i >> 1] |= (byte)((add[i] & 0x0F) << 4);
+                        bUpper[i >> 1] |= (byte) ((add[i] & 0x0F) << 4);
                 }
             }
 
@@ -58,14 +91,29 @@ namespace MinecraftStructureLib.Loader.Schematic
             if (tag.ContainsKey("Metadata")) bMetadata = tag["Metadata"].ToTagByteArray().Data;
             else if (tag.ContainsKey("Data")) bMetadata = tag["Data"].ToTagByteArray().Data;
 
-            var teList = tag["TileEntities"].ToTagList().Select(node => node.ToTagCompound());
-            var eList = tag["Entities"].ToTagList().Select(node => node.ToTagCompound()).ToArray();
+            var blocks = new Block[bLower.Length];
+            for (var i = 0; i < bLower.Length; i++)
+            {
+                short id;
+                if ((i & 1) == 1)
+                    id = (short) (((bUpper[i >> 1] & 0x0F) << 8) + (bLower[i] & 0xFF));
+                else
+                    id = (short) (((bUpper[i >> 1] & 0xF0) << 4) + (bLower[i] & 0xFF));
 
-            var length = tag["Length"].ToTagInt().Data;
-            var width = tag["Width"].ToTagInt().Data;
-            var height = tag["Height"].ToTagInt().Data;
+                var pos = GetBlockPos(length, width, i);
+                var metadata = bMetadata[i];
+                tiles.TryGetValue(pos, out var tile);
 
+                blocks[i] = new Block(TranslateBlockId(id), metadata, new NbtTree(tile?.Data));
+            }
+
+            return blocks;
+        }
+
+        private static Dictionary<BlockPos, TileEntity> LoadTileEntities(TagNodeCompound tag)
+        {
             var tiles = new Dictionary<BlockPos, TileEntity>();
+            var teList = tag["TileEntities"].ToTagList().Select(node => node.ToTagCompound());
             foreach (var teTag in teList)
             {
                 var x = teTag["x"].ToTagInt().Data;
@@ -76,21 +124,12 @@ namespace MinecraftStructureLib.Loader.Schematic
                 tiles.Add(pos, new TileEntity(pos, teTag));
             }
 
-            var blocks = new Block[bLower.Length];
-            for (var i = 0; i < bLower.Length; i++)
-            {
-                short id;
-                if ((i & 1) == 1)
-                    id = (short)(((bUpper[i >> 1] & 0x0F) << 8) + (bLower[i] & 0xFF));
-                else
-                    id = (short)(((bUpper[i >> 1] & 0xF0) << 4) + (bLower[i] & 0xFF));
+            return tiles;
+        }
 
-                var pos = GetBlockPos(length, width, i);
-                var metadata = bMetadata[i];
-                tiles.TryGetValue(pos, out var tile);
-
-                blocks[i] = new Block(TranslateBlockId(id), metadata, new NbtTree(tile?.Data));
-            }
+        private static Entity[] LoadEntities(TagNodeCompound tag)
+        {
+            var eList = tag["Entities"].ToTagList().Select(node => node.ToTagCompound()).ToArray();
 
             var entities = new Entity[eList.Length];
             for (var i = 0; i < eList.Length; i++)
@@ -103,7 +142,7 @@ namespace MinecraftStructureLib.Loader.Schematic
                 entities[i] = new Entity(posList[0], posList[1], posList[2], eTag);
             }
 
-            return new SchematicStructure(blocks, entities, width, height, length);
+            return entities;
         }
     }
 }

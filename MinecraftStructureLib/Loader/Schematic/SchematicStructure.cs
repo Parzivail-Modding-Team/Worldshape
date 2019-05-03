@@ -1,5 +1,6 @@
 ﻿using System;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Loader.Scarif;
 
 namespace MinecraftStructureLib.Loader.Schematic
 {
@@ -9,6 +10,7 @@ namespace MinecraftStructureLib.Loader.Schematic
 
         private readonly Block[] _blocks;
         private readonly Entity[] _entities;
+        private readonly TranslationMap _palette;
 
         /// <inheritdoc />
         public override Block this[int x, int y, int z]
@@ -17,10 +19,11 @@ namespace MinecraftStructureLib.Loader.Schematic
             set => _blocks[(y * Length + z) * Width + x] = value;
         }
 
-        public SchematicStructure(Block[] blocks, Entity[] entities, int width, int height, int length)
+        public SchematicStructure(Block[] blocks, Entity[] entities, TranslationMap palette, int width, int height, int length)
         {
             _blocks = blocks;
             _entities = entities;
+            _palette = palette;
             Width = width;
             Height = height;
             Length = length;
