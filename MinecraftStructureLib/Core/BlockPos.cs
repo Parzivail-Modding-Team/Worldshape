@@ -18,12 +18,14 @@
             return X == other.X && Y == other.Y && Z == other.Z;
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is null) return false;
+            if (ReferenceEquals(null, obj)) return false;
             return obj is BlockPos other && Equals(other);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked

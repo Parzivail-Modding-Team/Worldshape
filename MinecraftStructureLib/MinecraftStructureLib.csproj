@@ -54,6 +54,7 @@
     <Compile Include="Loader\Scarif\ScarifLoader.cs" />
     <Compile Include="Loader\Schematic\SchematicLoader.cs" />
     <Compile Include="Loader\StructureBlock\StructureBlockLoader.cs" />
+    <Compile Include="Loader\StructureBlock\StructureBlockPaletteEntry.cs" />
     <Compile Include="Loader\StructureBlock\StructureBlockStructure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Loader\Scarif\BlockFlags.cs" />

@@ -4,44 +4,60 @@ namespace MinecraftStructureLib.Core
 {
     public class Block
     {
-        public readonly NbtTree Data;
+        public readonly TagNodeCompound BlockState;
+        public readonly TagNodeCompound Data;
         public readonly string Id;
         public readonly int Metadata;
 
-        public Block(string id, int metadata = 0, NbtTree data = null)
+        public Block(string id, int metadata = 0, TagNodeCompound data = null)
         {
             Id = id;
             Metadata = metadata;
             Data = data;
         }
 
-        public bool Equals(Block other)
+        public Block(string id, TagNodeCompound blockState, TagNodeCompound data = null)
         {
-            return string.Equals(Id, other.Id) && Metadata == other.Metadata;
+            Id = id;
+            BlockState = blockState;
+            Data = data;
         }
 
+        protected bool Equals(Block other)
+        {
+            return Equals(BlockState, other.BlockState) && Equals(Data, other.Data) && string.Equals(Id, other.Id) && Metadata == other.Metadata;
+        }
+
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is null) return false;
-            return obj is Block other && Equals(other);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Block) obj);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             unchecked
             {
-                return ((Id != null ? Id.GetHashCode() : 0) * 397) ^ Metadata;
+                var hashCode = (BlockState != null ? BlockState.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Data != null ? Data.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Id != null ? Id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Metadata;
+                return hashCode;
             }
         }
 
         public static bool operator ==(Block left, Block right)
         {
-            return left != null && left.Equals(right);
+            return Equals(left, right);
         }
 
         public static bool operator !=(Block left, Block right)
         {
-            return left != null && !left.Equals(right);
+            return !Equals(left, right);
         }
     }
 }

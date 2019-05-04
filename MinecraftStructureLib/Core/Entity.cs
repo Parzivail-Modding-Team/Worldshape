@@ -17,16 +17,18 @@ namespace MinecraftStructureLib.Core
             Data = data;
         }
 
-        public bool Equals(Entity other)
+        protected bool Equals(Entity other)
         {
-            return X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z) && Equals(Data, other.Data);
+            return Equals(Data, other.Data) && X.Equals(other.X) && Y.Equals(other.Y) && Z.Equals(other.Z);
         }
 
         /// <inheritdoc />
         public override bool Equals(object obj)
         {
-            if (obj is null) return false;
-            return obj is Entity other && Equals(other);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Entity) obj);
         }
 
         /// <inheritdoc />
@@ -34,22 +36,22 @@ namespace MinecraftStructureLib.Core
         {
             unchecked
             {
-                var hashCode = X.GetHashCode();
+                var hashCode = (Data != null ? Data.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ X.GetHashCode();
                 hashCode = (hashCode * 397) ^ Y.GetHashCode();
                 hashCode = (hashCode * 397) ^ Z.GetHashCode();
-                hashCode = (hashCode * 397) ^ (Data != null ? Data.GetHashCode() : 0);
                 return hashCode;
             }
         }
 
         public static bool operator ==(Entity left, Entity right)
         {
-            return left != null && left.Equals(right);
+            return Equals(left, right);
         }
 
         public static bool operator !=(Entity left, Entity right)
         {
-            return left != null && !left.Equals(right);
+            return !Equals(left, right);
         }
     }
 }

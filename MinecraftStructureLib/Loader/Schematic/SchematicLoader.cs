@@ -11,7 +11,7 @@ namespace MinecraftStructureLib.Loader.Schematic
 {
     internal class SchematicLoader : IStructureLoader
     {
-        private string TranslateBlockId(int id)
+        private static string TranslateBlockId(TranslationMap map, int id)
         {
             return $"unknown:{id}";
         }
@@ -37,16 +37,16 @@ namespace MinecraftStructureLib.Loader.Schematic
             var length = nbt["Length"].ToTagInt().Data;
             var width = nbt["Width"].ToTagInt().Data;
             var height = nbt["Height"].ToTagInt().Data;
-
-            var tiles = LoadTileEntities(nbt);
-            var blocks = LoadBlocks(nbt, length, width, tiles);
-            var entities = LoadEntities(nbt);
+            
             var palette = LoadPalette(nbt);
+            var tiles = LoadTileEntities(nbt);
+            var blocks = LoadBlocks(nbt, palette, length, width, tiles);
+            var entities = LoadEntities(nbt);
 
             return new SchematicStructure(blocks, entities, palette, width, height, length);
         }
 
-        private TranslationMap LoadPalette(TagNodeCompound tag)
+        private static TranslationMap LoadPalette(TagNodeCompound tag)
         {
             var map = new TranslationMap();
 
@@ -64,7 +64,7 @@ namespace MinecraftStructureLib.Loader.Schematic
             return map;
         }
 
-        private Block[] LoadBlocks(TagNodeCompound tag, int length, int width, Dictionary<BlockPos, TileEntity> tiles)
+        private static Block[] LoadBlocks(TagNodeCompound tag, TranslationMap palette, int length, int width, Dictionary<BlockPos, TileEntity> tiles)
         {
             var bLower = tag["Blocks"].ToTagByteArray().Data;
             var bUpper = new byte[(bLower.Length >> 1) + 1];
@@ -104,7 +104,7 @@ namespace MinecraftStructureLib.Loader.Schematic
                 var metadata = bMetadata[i];
                 tiles.TryGetValue(pos, out var tile);
 
-                blocks[i] = new Block(TranslateBlockId(id), metadata, new NbtTree(tile?.Data));
+                blocks[i] = new Block(TranslateBlockId(palette, id), metadata, tile?.Data);
             }
 
             return blocks;

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Brotli;
 using MinecraftStructureLib.Core;
+using Substrate.Nbt;
 
 namespace MinecraftStructureLib.Loader.Scarif
 {
@@ -121,7 +122,7 @@ namespace MinecraftStructureLib.Loader.Scarif
                         using (var memstream = new MemoryStream())
                         {
                             // Terrible hack to make the NBT in the format that MC likes
-                            block.Value.Data.WriteTo(memstream);
+                            new NbtTree(block.Value.Data).WriteTo(memstream);
                             memstream.Seek(0, SeekOrigin.Begin);
                             var len = memstream.Length;
                             f.Write((int) len);

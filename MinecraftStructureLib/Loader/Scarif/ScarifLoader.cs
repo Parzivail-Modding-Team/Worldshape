@@ -118,7 +118,7 @@ namespace MinecraftStructureLib.Loader.Scarif
                         }
 
                         if (idMap.ContainsKey(id))
-                            blocks[new BlockPos(x, y, z)] = new Block(idMap.TranslateBlock(id), metadata, tileTag);
+                            blocks[new BlockPos(x, y, z)] = new Block(idMap.TranslateBlock(id), metadata, tileTag?.Root);
                         else
                             throw new IOException($"Unknown block ID found: {id}");
                     }

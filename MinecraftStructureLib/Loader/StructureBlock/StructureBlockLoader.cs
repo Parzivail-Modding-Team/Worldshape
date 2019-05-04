@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,24 +36,60 @@ namespace MinecraftStructureLib.Loader.StructureBlock
             var length = size[2];
             
             var palette = LoadPalette(nbt);
-            var blocks = LoadBlocks(nbt);
+            var blocks = LoadBlocks(nbt, palette);
             var entities = LoadEntities(nbt);
 
-            return new StructureBlockStructure(author, width, height, length, palette, blocks, entities);
+            return new StructureBlockStructure(author, width, height, length, blocks, entities);
         }
 
-        private Entity[] LoadEntities(TagNodeCompound nbt)
+        private static Entity[] LoadEntities(TagNodeCompound nbt)
         {
-            throw new NotImplementedException();
+            var entityList = nbt["entities"].ToTagList();
+            var entities = new Entity[entityList.Count];
+
+            for (var i = 0; i < entityList.Count; i++)
+            {
+                var tag = entityList[i].ToTagCompound();
+                var pos = tag["pos"].ToTagList().Select(node => node.ToTagDouble().Data).ToArray();
+                var entityNbt = tag["nbt"].ToTagCompound();
+                entities[i] = new Entity(pos[0], pos[1], pos[2], entityNbt);
+            }
+
+            return entities;
         }
 
-        private Dictionary<BlockPos, Block> LoadBlocks(TagNodeCompound nbt)
+        private static Dictionary<BlockPos, Block> LoadBlocks(TagNodeCompound nbt, StructureBlockPaletteEntry[] palette)
         {
+            var blockList = nbt["blocks"].ToTagList();
+            var blocks = new Dictionary<BlockPos, Block>();
+
+            foreach (var entry in blockList)
+            {
+                var tag = entry.ToTagCompound();
+                var pos = tag["pos"].ToTagList().Select(node => node.ToTagInt().Data).ToArray();
+                var stateIdx = (short)tag["state"].ToTagInt().Data;
+                var state = palette[stateIdx];
+                var blockNbt = tag.ContainsKey("nbt") ? tag["nbt"].ToTagCompound() : null;
+                blocks.Add(new BlockPos(pos[0], pos[1], pos[2]), new Block(state.Name, state.Props, blockNbt));
+            }
+
+            return blocks;
         }
 
-        private TranslationMap LoadPalette(TagNodeCompound nbt)
+        private static StructureBlockPaletteEntry[] LoadPalette(TagNodeCompound nbt)
         {
-            throw new NotImplementedException();
+            var paletteList = nbt["palettes"].ToTagList();
+            var paletteEntries = new StructureBlockPaletteEntry[paletteList.Count];
+
+            for (var i = 0; i < paletteList.Count; i++)
+            {
+                var tag = paletteList[i].ToTagCompound();
+                var name = tag["Name"].ToTagString().Data;
+                var props = tag["Properties"].ToTagCompound();
+                paletteEntries[i] = new StructureBlockPaletteEntry(name, props);
+            }
+
+            return paletteEntries;
         }
     }
 }
