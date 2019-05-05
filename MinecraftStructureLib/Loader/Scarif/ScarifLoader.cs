@@ -87,7 +87,7 @@ namespace MinecraftStructureLib.Loader.Scarif
                     for (var blockIdx = 0; blockIdx < numBlocks; blockIdx++)
                     {
                         // Format:
-                        // 0x 0000 1111
+                        // 0b 0000 1111
                         //    xxxx zzzz
                         var xz = s.ReadByte();
 

@@ -28,6 +28,11 @@ namespace MinecraftStructureLib.Core
             return Equals(BlockState, other.BlockState) && Equals(Data, other.Data) && string.Equals(Id, other.Id) && Metadata == other.Metadata;
         }
 
+        public override string ToString()
+        {
+            return $"{Id}.{Metadata}";
+        }
+
         /// <inheritdoc />
         public override bool Equals(object obj)
         {

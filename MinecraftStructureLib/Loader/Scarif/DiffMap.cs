@@ -5,5 +5,9 @@ namespace MinecraftStructureLib.Loader.Scarif
 {
     public class DiffMap : Dictionary<ChunkPosition, Dictionary<BlockPos, Block>>
     {
+        public override string ToString()
+        {
+            return "DiffMap";
+        }
     }
 }

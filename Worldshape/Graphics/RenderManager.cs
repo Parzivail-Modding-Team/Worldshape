@@ -8,6 +8,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using MinecraftStructureLib.Core;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Worldshape.Graphics.Buffer;
@@ -46,7 +47,8 @@ namespace Worldshape.Graphics
 //        private readonly ShaderUniform _uSamplesUi = new ShaderUniform("samplesUi");
 
         private Thread _worker;
-        
+        private Structure _structure;
+
         public Chunk[] Chunks { get; private set; }
         public Vector3 LightPosition { get; set; }
         
@@ -68,9 +70,10 @@ namespace Worldshape.Graphics
             _shaderScreen.Init();
             _workerHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
 
-            CreateChunks();
+            Chunks = new Chunk[0];
             CreateScreenVao();
         }
+
         private void CreateScreenVao()
         {
             float[] quadVertices = {
@@ -100,7 +103,16 @@ namespace Worldshape.Graphics
 
         public void CreateChunks()
         {
-            Chunks = new Chunk[0];
+            var chunkWidth = (int)(Math.Ceiling(_structure.Width / 16f) * 16);
+            var chunkLength = (int)(Math.Ceiling(_structure.Length / 16f) * 16);
+
+            Chunks = new Chunk[chunkWidth * chunkLength];
+            
+            for (var i = 0; i < chunkWidth; i++)
+            for (var j = 0; j < chunkLength; j++)
+            {
+                Chunks[i * chunkLength + j] = new Chunk(i, j);
+            }
         }
 
         public void EnqueueJob(IJob job)
@@ -181,25 +193,31 @@ namespace Worldshape.Graphics
                 chunk?.Draw();
 
             _shaderScreen.Release();
+            
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadMatrix(ref projection);
+            GL.MatrixMode(MatrixMode.Modelview);
+            var mat = view * model;
+            GL.LoadMatrix(ref mat);
 
-            // Render the ocean
-//            GL.Color3(Color.MediumBlue);
-//
-//            var waterLevel = _generator.GetWaterLevel();
-//
-//            GL.MatrixMode(MatrixMode.Projection);
-//            GL.LoadMatrix(ref projection);
-//            GL.MatrixMode(MatrixMode.Modelview);
-//            var mat = view * model;
-//            GL.LoadMatrix(ref mat);
-//
-//            GL.Begin(PrimitiveType.Quads);
-//            GL.Normal3(Vector3.UnitY);
-//            GL.Vertex3(-1, waterLevel - 0.4, -1);
-//            GL.Vertex3(SideLength * 16 - 1, waterLevel - 0.4, -1);
-//            GL.Vertex3(SideLength * 16 - 1, waterLevel - 0.4, SideLength * 16 - 1);
-//            GL.Vertex3(-1, waterLevel - 0.4, SideLength * 16 - 1);
-//            GL.End();
+            GL.Color3(Color.Red);
+            GL.Begin(PrimitiveType.LineStrip);
+            GL.Normal3(Vector3.UnitY);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(5, 0, 0);
+            GL.End();
+            GL.Color3(Color.LawnGreen);
+            GL.Begin(PrimitiveType.LineStrip);
+            GL.Normal3(Vector3.UnitY);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(0, 5, 0);
+            GL.End();
+            GL.Color3(Color.Blue);
+            GL.Begin(PrimitiveType.LineStrip);
+            GL.Normal3(Vector3.UnitY);
+            GL.Vertex3(0, 0, 0);
+            GL.Vertex3(0, 0, 5);
+            GL.End();
 
             GL.PopMatrix();
             _framebuffer.Release();
@@ -235,7 +253,7 @@ namespace Worldshape.Graphics
 //	        _uSamplesUi.Value = _framebufferUi.Samples;
 
 			_shaderScreen.Use(_uWidth, _uHeight, _uTexColor, _uSamples);
-            DrawFullscreenQuad(_framebuffer.TextureId, _framebufferUi.TextureId);
+            DrawFullscreenQuad(_framebuffer.TextureId);
             _shaderScreen.Release();
         }
 
@@ -260,8 +278,8 @@ namespace Worldshape.Graphics
         public void Rebuild()
         {
             CancelJobs();
-//            EnqueueJob(new JobRebuildChunks(_generator));
-            throw new NotImplementedException();
+            CreateChunks();
+            EnqueueJob(new JobPregenerateChunks(_structure));
         }
 
         public void CancelJobs()
@@ -327,5 +345,11 @@ namespace Worldshape.Graphics
 	    {
 		    _framebuffer.Samples = samples;
 	    }
+
+        public void LoadStructure(Structure structure)
+        {
+            _structure = structure;
+            Rebuild();
+        }
     }
 }

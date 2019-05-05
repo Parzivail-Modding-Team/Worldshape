@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmbeddedFiles.resx</DependentUpon>
     </Compile>
+    <Compile Include="Queue\JobPregenerateChunk.cs" />
     <Compile Include="World\Chunk.cs" />
     <Compile Include="Graphics\Buffer\ChunkBuffer.cs" />
     <Compile Include="Graphics\Buffer\Framebuffer.cs" />

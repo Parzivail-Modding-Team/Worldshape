@@ -13,6 +13,8 @@ namespace MinecraftStructureLib.Loader.Schematic
     {
         private static string TranslateBlockId(TranslationMap map, int id)
         {
+            if (id == 0)
+                return "minecraft:air";
             return $"unknown:{id}";
         }
 

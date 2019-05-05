@@ -60,15 +60,15 @@ namespace Worldshape.Graphics.Buffer
                         GL.BindBuffer(BufferTarget.ArrayBuffer, TexCoordBufferId);
 
                         // Send data to buffer
-                        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(buffer.Length * Vertex.Size),
+                        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(buffer.Length * TexCoord.Size),
                             buffer.TexCoordBuffer.ToArray(), 
                             BufferUsageHint.StaticDraw);
 
                         // Validate that the buffer is the correct size
                         GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
                             out int bufferSize);
-                        if (buffer.Length * Vertex.Size != bufferSize)
-                            throw new ApplicationException("Normal array not uploaded correctly");
+                        if (buffer.Length * TexCoord.Size != bufferSize)
+                            throw new ApplicationException("TexCoord array not uploaded correctly");
 
                         // Clear the buffer Binding
                         GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
@@ -108,14 +108,14 @@ namespace Worldshape.Graphics.Buffer
                         GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferId);
 
                         // Send data to buffer
-                        GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(buffer.Length * sizeof(short)),
+                        GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(buffer.Length * sizeof(int)),
                             buffer.IndexBuffer.ToArray(),
                             BufferUsageHint.StreamDraw);
 
                         // Validate that the buffer is the correct size
                         GL.GetBufferParameter(BufferTarget.ElementArrayBuffer, BufferParameterName.BufferSize,
                             out int bufferSize);
-                        if (buffer.Length * sizeof(short) != bufferSize)
+                        if (buffer.Length * sizeof(int) != bufferSize)
                             throw new ApplicationException("Element array not uploaded correctly");
 
                         // Clear the buffer Binding
@@ -129,6 +129,10 @@ namespace Worldshape.Graphics.Buffer
                     GL.BindBuffer(BufferTarget.ArrayBuffer, NormalBufferId);
                     GL.EnableVertexAttribArray(1);
                     GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 0, 0);
+
+                    GL.BindBuffer(BufferTarget.ArrayBuffer, TexCoordBufferId);
+                    GL.EnableVertexAttribArray(2);
+                    GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 0, 0);
 
                     GL.BindVertexArray(0);
 

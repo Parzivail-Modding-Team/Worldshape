@@ -13,6 +13,11 @@
             Z = z;
         }
 
+        public override string ToString()
+        {
+            return $"({X},{Y},{Z})";
+        }
+
         public bool Equals(BlockPos other)
         {
             return X == other.X && Y == other.Y && Z == other.Z;

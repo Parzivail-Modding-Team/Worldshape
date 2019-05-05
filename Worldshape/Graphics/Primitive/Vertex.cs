@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using MinecraftStructureLib.Core;
 
 namespace Worldshape.Graphics.Primitive
 {
@@ -15,6 +16,13 @@ namespace Worldshape.Graphics.Primitive
             X = x;
             Y = y;
             Z = z;
+        }
+
+        public Vertex(FaceDir dir)
+        {
+            X = dir.X;
+            Y = dir.Y;
+            Z = dir.Z;
         }
     }
 }

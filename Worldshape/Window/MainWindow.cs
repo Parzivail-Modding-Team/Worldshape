@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using MinecraftStructureLib.Core;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -11,6 +12,7 @@ namespace Worldshape.Window
 {
     public class MainWindow : GameWindow
     {
+        private readonly string[] _args;
         private bool _shouldDie;
         private KeyboardState _keyboard;
         private RenderManager _renderManager;
@@ -24,8 +26,11 @@ namespace Worldshape.Window
 
         private double _updateTimeAccumulator = 0;
 
-        public MainWindow() : base(960, 540, new GraphicsMode(32, 24, 0, 8))
+        private Structure _structure;
+
+        public MainWindow(string[] args) : base(960, 540, new GraphicsMode(32, 24, 0, 8))
         {
+            _args = args;
             Load += OnLoad;
             Closing += OnClose;
             Resize += OnResize;
@@ -58,6 +63,9 @@ namespace Worldshape.Window
             _keyboard = Keyboard.GetState();
             
             _renderManager = new RenderManager(this);
+            
+            _structure = StructureLoader.Load(_args[0]);
+            _renderManager.LoadStructure(_structure);
         }
 
         private void OnClose(object sender, CancelEventArgs e)
@@ -135,7 +143,7 @@ namespace Worldshape.Window
             var mScale = Matrix4.CreateScale(scale);
             var mRotX = Matrix4.CreateRotationX((float)(rotX / 180 * Math.PI));
             var mRotY = Matrix4.CreateRotationY((float)(rotY / 180 * Math.PI));
-            var mLocalTranslate = Matrix4.CreateTranslation(0, 0, 0);
+            var mLocalTranslate = Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
             var mView = mLocalTranslate * mRotY * mRotX * mScale * mTranslate;
 
             _renderManager.Render(mModel, mView, mProjection);

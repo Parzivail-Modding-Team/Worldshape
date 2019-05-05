@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -137,14 +138,35 @@ namespace MinecraftStructureLib.Loader.Scarif
 
         public Block GetWorldBlock(int x, int y, int z)
         {
-            var chunkX = x / 16;
-            var chunkZ = z / 16;
+            var chunkX = (int)Math.Floor(x / 16f);
+            var chunkZ = (int)Math.Floor(z / 16f);
+
+            int bx;
+            int bz;
+
+            if (x < 0)
+            {
+                bx = 15 - (-x + 15) % 16;
+            }
+            else
+            {
+                bx = x % 16;
+            }
+
+            if (z < 0)
+            {
+                bz = 15 - (-z + 15) % 16;
+            }
+            else
+            {
+                bz = z % 16;
+            }
+
             var chunkPos = new ChunkPosition(chunkX, chunkZ);
             if (!DiffMap.TryGetValue(chunkPos, out var blocks))
                 return null;
-
-            var blockPos = new BlockPos(x % 16, y, z % 16);
-            return !blocks.TryGetValue(blockPos, out var block) ? null : block;
+            var blockPos = new BlockPos(bx, y, bz);
+            return blocks.TryGetValue(blockPos, out var block) ? block : null;
         }
     }
 }

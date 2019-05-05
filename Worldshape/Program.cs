@@ -10,10 +10,8 @@ namespace Worldshape
         {
             if (args.Length == 0)
                 return -1;
-
-            var structure = StructureLoader.Load(args[0]);
             
-            new MainWindow
+            new MainWindow(args)
             {
                 VSync = VSyncMode.On
             }.Run(20);

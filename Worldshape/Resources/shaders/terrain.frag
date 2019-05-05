@@ -1,13 +1,12 @@
 ﻿#version 330 core
 
 uniform vec3 lightPos;
-uniform vec3 tint;
 uniform int samples;
 uniform sampler2D random;
 
 in vec3 fragPos;
-in vec4 fragColor;
 in vec3 fragNormal;
+in vec2 fragTexCoord;
 
 out vec4 color;
 
@@ -21,9 +20,9 @@ void main()
     float ambient = 0.3;
 	
     // Look up noise from texture
-    vec4 noise = texture(random, gl_FragCoord.xy / resolution.yy);
+    vec4 noise = texture(random, gl_FragCoord.xy / resolution.xy);
     
-    color = vec4(fragColor.rgb * tint * clamp(ambient + diffuse, 0, 1), 1.);
+    color = vec4(vec3(fragTexCoord.x, fragTexCoord.y, 0.) * clamp(ambient + diffuse, 0, 1), 1.);
 
     color += vec4(vec3((noise.r - 0.5) / 255.0), 0.0);
 }
