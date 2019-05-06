@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace MinecraftStructureLib.Loader.Scarif
+namespace MinecraftStructureLib.Core.Translation
 {
     public class TranslationMap : Dictionary<short, string>
     {
+        public static TranslationMap Minecraft12 = new TranslationMapMinecraft12();
+
         public short TranslateBlock(string id)
         {
             foreach (var pair in this)

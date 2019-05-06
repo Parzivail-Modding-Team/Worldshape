@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Core.Translation;
 using MinecraftStructureLib.Loader.Scarif;
 using Substrate.Core;
 using Substrate.Nbt;
@@ -13,9 +14,7 @@ namespace MinecraftStructureLib.Loader.Schematic
     {
         private static string TranslateBlockId(TranslationMap map, int id)
         {
-            if (id == 0)
-                return "minecraft:air";
-            return $"unknown:{id}";
+            return map.ContainsKey((short)id) ? map[(short)id] : $"unknown:{id}";
         }
 
         private static BlockPos GetBlockPos(int length, int width, int index)
@@ -50,17 +49,17 @@ namespace MinecraftStructureLib.Loader.Schematic
 
         private static TranslationMap LoadPalette(TagNodeCompound tag)
         {
-            var map = new TranslationMap();
+            var map = TranslationMap.Minecraft12;
 
             if (tag.ContainsKey("SchematicaMapping")) // Schematica
             {
                 foreach (var entry in tag["SchematicaMapping"].ToTagCompound())
-                    map.Add(entry.Value.ToTagShort().Data, entry.Key);
+                    map[entry.Value.ToTagShort().Data] = entry.Key;
             }
             else if (tag.ContainsKey("BlockIDs")) // MCEdit2
             {
                 foreach (var entry in tag["BlockIDs"].ToTagCompound())
-                    map.Add(short.Parse(entry.Key), entry.Value.ToTagString().Data);
+                    map[short.Parse(entry.Key)] = entry.Value.ToTagString().Data;
             }
 
             return map;

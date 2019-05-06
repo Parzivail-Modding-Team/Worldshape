@@ -50,6 +50,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EmbeddedFiles.resx</DependentUpon>
     </Compile>
+    <Compile Include="Graphics\Texture\ImagePointer.cs" />
+    <Compile Include="Graphics\Texture\Texture.cs" />
+    <Compile Include="Graphics\Texture\TextureAtlas.cs" />
+    <Compile Include="Layout\Node.cs" />
     <Compile Include="Queue\JobPregenerateChunk.cs" />
     <Compile Include="World\Chunk.cs" />
     <Compile Include="Graphics\Buffer\ChunkBuffer.cs" />

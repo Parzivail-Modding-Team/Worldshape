@@ -4,6 +4,7 @@ using System.IO.Compression;
 using System.Text;
 using Brotli;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Core.Translation;
 using Substrate.Nbt;
 
 namespace MinecraftStructureLib.Loader.Scarif

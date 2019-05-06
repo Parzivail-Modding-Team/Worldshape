@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Brotli;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Core.Translation;
 using Substrate.Nbt;
 
 namespace MinecraftStructureLib.Loader.Scarif
@@ -144,6 +145,7 @@ namespace MinecraftStructureLib.Loader.Scarif
             int bx;
             int bz;
 
+            // This should all just technically be mod(n, 16) but C# modulus doesn't do that on negative numbers
             if (x < 0)
             {
                 bx = 15 - (-x + 15) % 16;

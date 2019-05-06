@@ -3,6 +3,7 @@
 uniform vec3 lightPos;
 uniform int samples;
 uniform sampler2D random;
+uniform sampler2D atlas;
 
 in vec3 fragPos;
 in vec3 fragNormal;
@@ -22,7 +23,7 @@ void main()
     // Look up noise from texture
     vec4 noise = texture(random, gl_FragCoord.xy / resolution.xy);
     
-    color = vec4(vec3(fragTexCoord.x, fragTexCoord.y, 0.) * clamp(ambient + diffuse, 0, 1), 1.);
+    color = vec4(texture(atlas, fragTexCoord).rgb * clamp(ambient + diffuse, 0, 1), 1.);
 
     color += vec4(vec3((noise.r - 0.5) / 255.0), 0.0);
 }

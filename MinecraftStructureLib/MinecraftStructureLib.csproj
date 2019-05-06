@@ -51,6 +51,7 @@
     <Compile Include="Core\Structure.cs" />
     <Compile Include="Core\StructureLoader.cs" />
     <Compile Include="Core\TileEntity.cs" />
+    <Compile Include="Core\Translation\TranslationMapMinecraft12.cs" />
     <Compile Include="Loader\Scarif\ScarifLoader.cs" />
     <Compile Include="Loader\Schematic\SchematicLoader.cs" />
     <Compile Include="Loader\StructureBlock\StructureBlockLoader.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="Loader\Scarif\ChunkBounds.cs" />
     <Compile Include="Loader\Scarif\ChunkPosition.cs" />
     <Compile Include="Loader\Scarif\DiffMap.cs" />
-    <Compile Include="Loader\Scarif\TranslationMap.cs" />
+    <Compile Include="Core\Translation\TranslationMap.cs" />
     <Compile Include="Loader\Scarif\ScarifStructure.cs" />
     <Compile Include="Loader\Schematic\SchematicStructure.cs" />
   </ItemGroup>

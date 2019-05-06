@@ -3,16 +3,19 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using MinecraftStructureLib.Core;
+using MinecraftStructureLib.Core.Translation;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Shader;
+using Worldshape.Graphics.Texture;
 using Worldshape.Queue;
 using Worldshape.World;
 
@@ -38,6 +41,7 @@ namespace Worldshape.Graphics
         private readonly ShaderUniform _uMatModel = new ShaderUniform("m");
         private readonly ShaderUniform _uMatView = new ShaderUniform("v");
         private readonly ShaderUniform _uMatProjection = new ShaderUniform("p");
+        private readonly ShaderUniform _uTexAtlas = new ShaderUniform("atlas");
         private readonly ShaderUniform _uWidth = new ShaderUniform("width");
         private readonly ShaderUniform _uHeight = new ShaderUniform("height");
         private readonly ShaderUniform _uTexColor = new ShaderUniform("screenColor");
@@ -48,6 +52,7 @@ namespace Worldshape.Graphics
 
         private Thread _worker;
         private Structure _structure;
+        private TextureAtlas _texAtlas;
 
         public Chunk[] Chunks { get; private set; }
         public Vector3 LightPosition { get; set; }
@@ -72,6 +77,19 @@ namespace Worldshape.Graphics
 
             Chunks = new Chunk[0];
             CreateScreenVao();
+
+            var textures = new List<KeyValuePair<string, string>>();
+            // TODO
+//            var files = Directory.GetFiles("ASSETSDIR");
+//            var mapping = TranslationMap.Minecraft12;
+//            foreach (var entry in mapping)
+//            {
+//                var first = files.FirstOrDefault(path =>
+//                    Path.GetFileNameWithoutExtension(path) == entry.Value.Split(':')[1]);
+//                if (first != null)
+//                    textures.Add(new KeyValuePair<string, string>(entry.Value, first));
+//            }
+            _texAtlas = new TextureAtlas(textures, 16);
         }
 
         private void CreateScreenVao()
@@ -182,12 +200,15 @@ namespace Worldshape.Graphics
             _uMatProjection.Value = projection;
 	        _uSamples.Value = _framebuffer.Samples;
             _uTexRandom.Value = 1;
+            _uTexAtlas.Value = 2;
             
             GL.ActiveTexture(TextureUnit.Texture1);
             GL.BindTexture(TextureTarget.Texture2D, _texRandom);
+            GL.ActiveTexture(TextureUnit.Texture2);
+            GL.BindTexture(TextureTarget.Texture2D, _texAtlas.Texture);
 
 			// Engage shader, render, disengage
-			_shaderModel.Use(_uLightPos, _uMatModel, _uMatView, _uMatProjection, _uSamples, _uTexRandom);
+			_shaderModel.Use(_uLightPos, _uMatModel, _uMatView, _uMatProjection, _uSamples, _uTexRandom, _uTexAtlas);
 
             foreach (var chunk in Chunks)
                 chunk?.Draw();
@@ -279,7 +300,7 @@ namespace Worldshape.Graphics
         {
             CancelJobs();
             CreateChunks();
-            EnqueueJob(new JobPregenerateChunks(_structure));
+            EnqueueJob(new JobPregenerateChunks(_structure, _texAtlas));
         }
 
         public void CancelJobs()
