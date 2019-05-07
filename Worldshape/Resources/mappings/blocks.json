@@ -1,13 +1,17 @@
 [
 	{
 		"name": "minecraft:air",
-		"maxMetadata": 0,
-		"render": "none"
+		"id": 0,
+		"maxMeta": 0,
+		"render": "none",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone",
-		"maxMetadata": 6,
-		"textures": [
+		"id": 1,
+		"maxMeta": 6,
+		"render": "solid",
+		"texture": [
 			"blocks/stone.png",
 			"blocks/stone_granite.png",
 			"blocks/stone_granite_smooth.png",
@@ -19,113 +23,172 @@
 	},
 	{
 		"name": "minecraft:grass",
-		"maxMetadata": 0,
-		"render":  "tint",
-		"textures": [
-			"blocks/grass"
+		"id": 2,
+		"maxMeta": 0,
+		"render": "column",
+		"tint": true,
+		"texture": [
+			"blocks/grass.png,blocks/grass_side.png,blocks/dirt.png"
 		]
 	},
 	{
 		"name": "minecraft:dirt",
-		"maxMetadata": 2,
+		"id": 3,
+		"maxMeta": 2,
 		"render": "column",
-		"textures": [
-			"blocks/dirt.png|blocks/dirt.png|blocks/dirt.png",
-			"blocks/dirt_coarse.png|blocks/dirt_coarse.png|blocks/dirt_coarse.png",
-			"blocks/dirt_podzol_top.png|blocks/dirt_podzol_side.png|blocks/dirt.png"
+		"texture": [
+			"blocks/dirt.png,blocks/dirt.png,blocks/dirt.png",
+			"blocks/coarse_dirt.png,blocks/coarse_dirt.png,blocks/coarse_dirt.png",
+			"blocks/dirt_podzol_top.png,blocks/dirt_podzol_side.png,blocks/dirt.png"
 		]
 	},
 	{
 		"name": "minecraft:cobblestone",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 4,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/cobblestone.png"
 		]
 	},
 	{
 		"name": "minecraft:planks",
-		"maxMetadata": 5,
-		"textures": [
-			"block/planks_oak.png",
-			"block/planks_spruce.png",
-			"block/planks_birch.png",
-			"block/planks_jungle.png",
-			"block/planks_acacia.png",
-			"block/planks_big_oak.png"
+		"id": 5,
+		"maxMeta": 5,
+		"render": "solid",
+		"texture": [
+			"blocks/planks_oak.png",
+			"blocks/planks_spruce.png",
+			"blocks/planks_birch.png",
+			"blocks/planks_jungle.png",
+			"blocks/planks_acacia.png",
+			"blocks/planks_big_oak.png"
 		]
 	},
 	{
 		"name": "minecraft:sapling",
-		"maxMetadata": 5,
+		"id": 6,
+		"maxMeta": 5,
 		"render": "cross",
-		"textures": [
+		"texture": [
 			"blocks/sapling_oak.png",
 			"blocks/sapling_spruce.png",
 			"blocks/sapling_birch.png",
 			"blocks/sapling_jungle.png",
 			"blocks/sapling_acacia.png",
-			"blocks/sapling_roofed_oak.png"
+			"blocks/sapling_roofed_oak.png"			
 		]
 	},
 	{
 		"name": "minecraft:bedrock",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 7,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/bedrock.png"
 		]
 	},
 	{
+		"name": "minecraft:flowing_water",
+		"id": 8,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/water_flow.png"
+		]
+	},
+	{
+		"name": "minecraft:water",
+		"id": 9,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/water_still.png"
+		]
+	},
+	{
+		"name": "minecraft:flowing_lava",
+		"id": 10,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/lava_flow.png"
+		]
+	},
+	{
+		"name": "minecraft:lava",
+		"id": 11,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/lava_still.png"
+		]
+	},
+	{
 		"name": "minecraft:sand",
-		"maxMetadata": 1,
-		"textures": [
+		"id": 12,
+		"maxMeta": 1,
+		"render": "solid",
+		"texture": [
 			"blocks/sand.png",
 			"blocks/red_sand.png"
 		]
 	},
 	{
 		"name": "minecraft:gravel",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 13,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/gravel.png"
 		]
 	},
 	{
 		"name": "minecraft:gold_ore",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 14,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/gold_ore.png"
 		]
 	},
 	{
 		"name": "minecraft:iron_ore",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 15,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/iron_ore.png"
 		]
 	},
 	{
 		"name": "minecraft:coal_ore",
-		"maxMetadata": 0,
-		"textures": [
+		"id": 16,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
 			"blocks/coal_ore.png"
 		]
 	},
 	{
 		"name": "minecraft:log",
-		"maxMetadata": 3,
+		"id": 17,
+		"maxMeta": 3,
 		"render": "log",
-		"textures": [
-			"blocks/log_oak_top.png|blocks/log_oak_side.png|blocks/log_oak_top.png",
-			"blocks/log_spruce_top.png|blocks/log_spruce_side.png|blocks/log_spruce_top.png",
-			"blocks/log_birch_top.png|blocks/log_birch_side.png|blocks/log_birch_top.png",
-			"blocks/log_jungle_top.png|blocks/log_jungle_side.png|blocks/log_jungle_top.png"
+		"texture": [
+			"blocks/log_oak_top.png,blocks/log_oak.png,blocks/log_oak_top.png",
+			"blocks/log_spruce_top.png,blocks/log_spruce.png,blocks/log_spruce_top.png",
+			"blocks/log_birch_top.png,blocks/log_birch.png,blocks/log_birch_top.png",
+			"blocks/log_jungle_top.png,blocks/log_jungle.png,blocks/log_jungle_top.png"
 		]
 	},
 	{
 		"name": "minecraft:leaves",
-		"maxMetadata": 3,
-		"render": "tint",
-		"textures": [
+		"id": 18,
+		"maxMeta": 3,
+		"render": "solid",
+		"tint": true,
+		"texture": [
 			"blocks/leaves_oak.png",
 			"blocks/leaves_spruce.png",
 			"blocks/leaves_birch.png",
@@ -134,1297 +197,1648 @@
 	},
 	{
 		"name": "minecraft:sponge",
-		"maxMetadata": 1,
-		"textures": [
-			"0,1"
+		"id": 19,
+		"maxMeta": 1,
+		"render": "solid",
+		"texture": [
+			"blocks/sponge.png",
+			"blocks/sponge_wet.png"
 		]
 	},
 	{
 		"name": "minecraft:glass",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
+		"id": 20,
+		"maxMeta": 0,
+		"render": "transparent",
+		"texture": [
+			"blocks/glass.png"
 		]
 	},
 	{
 		"name": "minecraft:lapis_ore",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
+		"id": 21,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/lapis_ore.png"
 		]
 	},
 	{
 		"name": "minecraft:lapis_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
+		"id": 22,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/lapis_block.png"
 		]
 	},
 	{
 		"name": "minecraft:dispenser",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 23,
+		"maxMeta": 0,
+		"render": "dispenser",
+		"texture": []
 	},
 	{
 		"name": "minecraft:sandstone",
-		"maxMetadata": 2,
-		"textures": [
-			"0,1,2"
+		"id": 24,
+		"maxMeta": 2,
+		"render": "column",
+		"texture": [
+			"blocks/sandstone_top.png,blocks/sandstone_normal.png,blocks/sandstone_bottom.png",
+			"blocks/sandstone_top.png,blocks/sandstone_carved.png,blocks/sandstone_bottom.png",
+			"blocks/sandstone_top.png,blocks/sandstone_smooth.png,blocks/sandstone_bottom.png"
 		]
 	},
 	{
 		"name": "minecraft:noteblock",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
+		"id": 25,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": [
+			"blocks/noteblock.png"
 		]
+	},
+	{
+		"name": "minecraft:bed",
+		"id": 26,
+		"maxMeta": 0,
+		"render": "bed",
+		"texture": []
 	},
 	{
 		"name": "minecraft:golden_rail",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 27,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:detector_rail",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 28,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:sticky_piston",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 29,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:web",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 30,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:tallgrass",
-		"maxMetadata": 2,
-		"textures": [
-			"1,2"
-		]
+		"id": 31,
+		"maxMeta": 2,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:deadbush",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 32,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:piston",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 33,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:piston_head",
+		"id": 34,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:wool",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 35,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:yellow_flower",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 37,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_flower",
-		"maxMetadata": 8,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8"
-		]
+		"id": 38,
+		"maxMeta": 8,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brown_mushroom",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 39,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_mushroom",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 40,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:gold_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 41,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:iron_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 42,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:double_stone_slab",
+		"id": 43,
+		"maxMeta": 7,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_slab",
-		"maxMetadata": 7,
-		"textures": [
-			"0,1,3,4,5,6,7"
-		]
+		"id": 44,
+		"maxMeta": 7,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brick_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 45,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:tnt",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 46,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:bookshelf",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 47,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:mossy_cobblestone",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 48,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:obsidian",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 49,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:torch",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 50,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:fire",
+		"id": 51,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:mob_spawner",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 52,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:oak_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 53,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:chest",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 54,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:redstone_wire",
+		"id": 55,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:diamond_ore",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 56,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:diamond_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 57,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:crafting_table",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 58,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:wheat",
+		"id": 59,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:farmland",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 60,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:furnace",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 61,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:lit_furnace",
+		"id": 62,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:standing_sign",
+		"id": 63,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:wooden_door",
+		"id": 64,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:ladder",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 65,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:rail",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 66,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 67,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:wall_sign",
+		"id": 68,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:lever",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 69,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_pressure_plate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 70,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:iron_door",
+		"id": 71,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:wooden_pressure_plate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 72,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:redstone_ore",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 73,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:lit_redstone_ore",
+		"id": 74,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:unlit_redstone_torch",
+		"id": 75,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:redstone_torch",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 76,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_button",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 77,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:snow_layer",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 78,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:ice",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 79,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:snow",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 80,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:cactus",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 81,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:clay",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 82,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:reeds",
+		"id": 83,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:jukebox",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 84,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 85,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:pumpkin",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 86,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:netherrack",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 87,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:soul_sand",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 88,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:glowstone",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 89,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:portal",
+		"id": 90,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:lit_pumpkin",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 91,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:cake",
+		"id": 92,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:unpowered_repeater",
+		"id": 93,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:powered_repeater",
+		"id": 94,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stained_glass",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 95,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:trapdoor",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 96,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:monster_egg",
-		"maxMetadata": 5,
-		"textures": [
-			"0,1,2,3,4,5"
-		]
+		"id": 97,
+		"maxMeta": 5,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stonebrick",
-		"maxMetadata": 3,
-		"textures": [
-			"0,1,2,3"
-		]
+		"id": 98,
+		"maxMeta": 3,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brown_mushroom_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 99,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_mushroom_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 100,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:iron_bars",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 101,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:glass_pane",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 102,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:melon_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 103,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:pumpkin_stem",
+		"id": 104,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:melon_stem",
+		"id": 105,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:vine",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 106,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 107,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brick_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 108,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_brick_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 109,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:mycelium",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 110,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:waterlily",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 111,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:nether_brick",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 112,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:nether_brick_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 113,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:nether_brick_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 114,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:nether_wart",
+		"id": 115,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:enchanting_table",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 116,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:brewing_stand",
+		"id": 117,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:cauldron",
+		"id": 118,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:end_portal",
+		"id": 119,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:end_portal_frame",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 120,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:end_stone",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 121,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:dragon_egg",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 122,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:redstone_lamp",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 123,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:lit_redstone_lamp",
+		"id": 124,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:double_wooden_slab",
+		"id": 125,
+		"maxMeta": 5,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:wooden_slab",
-		"maxMetadata": 5,
-		"textures": [
-			"0,1,2,3,4,5"
-		]
+		"id": 126,
+		"maxMeta": 5,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:cocoa",
+		"id": 127,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:sandstone_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 128,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:emerald_ore",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 129,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:ender_chest",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 130,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:tripwire_hook",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 132,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:emerald_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 133,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:spruce_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 134,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:birch_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 135,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:jungle_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 136,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:command_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 137,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:beacon",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 138,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:cobblestone_wall",
-		"maxMetadata": 1,
-		"textures": [
-			"0,1"
-		]
+		"id": 139,
+		"maxMeta": 1,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:flower_pot",
+		"id": 140,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:carrots",
+		"id": 141,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:potatoes",
+		"id": 142,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:wooden_button",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 143,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:skull",
+		"id": 144,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:anvil",
-		"maxMetadata": 2,
-		"textures": [
-			"0,1,2"
-		]
+		"id": 145,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:trapped_chest",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 146,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:light_weighted_pressure_plate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 147,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:heavy_weighted_pressure_plate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 148,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:unpowered_comparator",
+		"id": 149,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:powered_comparator",
+		"id": 150,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:daylight_detector",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 151,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:redstone_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 152,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:quartz_ore",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 153,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:hopper",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 154,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:quartz_block",
-		"maxMetadata": 2,
-		"textures": [
-			"0,1,2"
-		]
+		"id": 155,
+		"maxMeta": 2,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:quartz_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 156,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:activator_rail",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 157,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:dropper",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 158,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stained_hardened_clay",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 159,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stained_glass_pane",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 160,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:leaves2",
-		"maxMetadata": 1,
-		"textures": [
-			"0,1"
-		]
+		"id": 161,
+		"maxMeta": 1,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:log2",
-		"maxMetadata": 1,
-		"textures": [
-			"0,1"
-		]
+		"id": 162,
+		"maxMeta": 1,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:acacia_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 163,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:dark_oak_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 164,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:slime",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 165,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:barrier",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 166,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:iron_trapdoor",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 167,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:prismarine",
-		"maxMetadata": 2,
-		"textures": [
-			"0,1,2"
-		]
+		"id": 168,
+		"maxMeta": 2,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:sea_lantern",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 169,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:hay_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 170,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:carpet",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 171,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:hardened_clay",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 172,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:coal_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 173,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:packed_ice",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 174,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:double_plant",
-		"maxMetadata": 5,
-		"textures": [
-			"0,1,2,3,4,5"
-		]
+		"id": 175,
+		"maxMeta": 5,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:standing_banner",
+		"id": 176,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:wall_banner",
+		"id": 177,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:daylight_detector_inverted",
+		"id": 178,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_sandstone",
-		"maxMetadata": 2,
-		"textures": [
-			"0,1,2"
-		]
+		"id": 179,
+		"maxMeta": 2,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_sandstone_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 180,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:double_stone_slab2",
+		"id": 181,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:stone_slab2",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 182,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:spruce_fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 183,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:birch_fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 184,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:jungle_fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 185,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:dark_oak_fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 186,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:acacia_fence_gate",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 187,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:spruce_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 188,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:birch_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 189,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:jungle_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 190,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:dark_oak_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 191,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:acacia_fence",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 192,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:spruce_door",
+		"id": 193,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:birch_door",
+		"id": 194,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:jungle_door",
+		"id": 195,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:acacia_door",
+		"id": 196,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:dark_oak_door",
+		"id": 197,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:end_rod",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 198,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:chorus_plant",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 199,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:chorus_flower",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 200,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purpur_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 201,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purpur_pillar",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 202,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purpur_stairs",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 203,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:purpur_double_slab",
+		"id": 204,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purpur_slab",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 205,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:end_bricks",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 206,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:beetroots",
+		"id": 207,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:grass_path",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 208,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:end_gateway",
+		"id": 209,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:repeating_command_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 210,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:chain_command_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 211,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:frosted_ice",
+		"id": 212,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:magma",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 213,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:nether_wart_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 214,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_nether_brick",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 215,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:bone_block",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 216,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:structure_void",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 217,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:observer",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 218,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:white_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 219,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:orange_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 220,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:magenta_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 221,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:light_blue_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 222,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:yellow_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 223,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:lime_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 224,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:pink_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 225,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:gray_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 226,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:silver_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 227,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:cyan_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 228,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purple_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 229,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:blue_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 230,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brown_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 231,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:green_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 232,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 233,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:black_shulker_box",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 234,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:white_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 235,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:orange_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 236,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:magenta_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 237,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:light_blue_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 238,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:yellow_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 239,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:lime_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 240,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:pink_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 241,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:gray_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 242,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
-		"name": "minecraft:silver_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"name": "minecraft:light_gray_glazed_terracotta",
+		"id": 243,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:cyan_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 244,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:purple_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 245,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:blue_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 246,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:brown_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 247,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:green_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 248,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:red_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 249,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:black_glazed_terracotta",
-		"maxMetadata": 0,
-		"textures": [
-			"0"
-		]
+		"id": 250,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	},
 	{
 		"name": "minecraft:concrete",
-		"maxMetadata": 15,
-		"textures": [
-			"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
-		]
+		"id": 251,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:concrete_powder",
+		"id": 252,
+		"maxMeta": 15,
+		"render": "solid",
+		"texture": []
+	},
+	{
+		"name": "minecraft:structure_block",
+		"id": 255,
+		"maxMeta": 0,
+		"render": "solid",
+		"texture": []
 	}
 ]
