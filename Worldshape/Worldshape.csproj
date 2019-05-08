@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\TextureMap.cs" />
+    <Compile Include="Configuration\BlockMap.cs" />
+    <Compile Include="Configuration\BlockMapping.cs" />
     <Compile Include="EmbeddedFiles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +89,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
     <PackageReference Include="OpenTK">
       <Version>3.0.1</Version>
     </PackageReference>
