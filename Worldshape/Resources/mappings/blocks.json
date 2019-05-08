@@ -237,7 +237,9 @@
 		"id": 23,
 		"maxMeta": 0,
 		"render": "dispenser",
-		"texture": []
+		"texture": [
+			"blocks/dispeser_front_horizontal.png,blocks/dispeser_front_vertical.png,blocks/furnace_side.png,blocks/furnace_top.png"
+		]
 	},
 	{
 		"name": "minecraft:sandstone",
@@ -264,224 +266,345 @@
 		"id": 26,
 		"maxMeta": 0,
 		"render": "bed",
-		"texture": []
+		"texture": [
+			"entity/bed/white.png",
+			"entity/bed/orange.png",
+			"entity/bed/magenta.png",
+			"entity/bed/light_blue.png",
+			"entity/bed/yellow.png",
+			"entity/bed/lime.png",
+			"entity/bed/pink.png",
+			"entity/bed/gray.png",
+			"entity/bed/silver.png",
+			"entity/bed/cyan.png",
+			"entity/bed/purple.png",
+			"entity/bed/blue.png",
+			"entity/bed/brown.png",
+			"entity/bed/green.png",
+			"entity/bed/red.png",
+			"entity/bed/black.png"
+		]
 	},
 	{
 		"name": "minecraft:golden_rail",
 		"id": 27,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/rail_golden.png"
+		]
 	},
 	{
 		"name": "minecraft:detector_rail",
 		"id": 28,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/rail_detector.png"
+		]
 	},
 	{
 		"name": "minecraft:sticky_piston",
 		"id": 29,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "piston",
+		"texture": [
+			"blocks/piston_top_sticky.png,blocks/piston_inner.png,blocks/piston_side.png,blocks/piston_bottom.png"
+		]
 	},
 	{
 		"name": "minecraft:web",
 		"id": 30,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "cross",
+		"texture": [
+			"blocks/web.png"
+		]
 	},
 	{
 		"name": "minecraft:tallgrass",
 		"id": 31,
 		"maxMeta": 2,
-		"render": "solid",
-		"texture": []
+		"render": "cross",
+		"texture": [
+			"blocks/deadbush.png",
+			"blocks/tallgrass.png",
+			"blocks/fern.png"
+		]
 	},
 	{
 		"name": "minecraft:deadbush",
 		"id": 32,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/deadbush.png"
+		]
 	},
 	{
 		"name": "minecraft:piston",
 		"id": 33,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/piston_top_normal.png,blocks/piston_inner.png,blocks/piston_side.png,blocks/piston_bottom.png"
+		]
 	},
 	{
 		"name": "minecraft:piston_head",
 		"id": 34,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/piston_top_normal.png"
+		]
 	},
 	{
 		"name": "minecraft:wool",
 		"id": 35,
 		"maxMeta": 15,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/wool_colored_white.png",
+			"blocks/wool_colored_orange.png",
+			"blocks/wool_colored_magenta.png",
+			"blocks/wool_colored_light_blue.png",
+			"blocks/wool_colored_yellow.png",
+			"blocks/wool_colored_lime.png",
+			"blocks/wool_colored_pink.png",
+			"blocks/wool_colored_gray.png",
+			"blocks/wool_colored_silver.png",
+			"blocks/wool_colored_cyan.png",
+			"blocks/wool_colored_purple.png",
+			"blocks/wool_colored_blue.png",
+			"blocks/wool_colored_brown.png",
+			"blocks/wool_colored_green.png",
+			"blocks/wool_colored_red.png",
+			"blocks/wool_colored_black.png"
+		]
 	},
 	{
 		"name": "minecraft:yellow_flower",
 		"id": 37,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/flower_dandelion.png"
+		]
 	},
 	{
 		"name": "minecraft:red_flower",
 		"id": 38,
 		"maxMeta": 8,
-		"render": "solid",
-		"texture": []
+		"render": "cross",
+		"texture": [
+			"blocks/flower_rose.png",
+			"blocks/flower_blue_orchid.png",
+			"blocks/flower_allium.png",
+			"blocks/flower_houstonia.png",
+			"blocks/flower_tulip_red.png",
+			"blocks/flower_tulip_orange.png",
+			"blocks/flower_tulip_white.png",
+			"blocks/flower_tulip_pink.png",
+			"blocks/flower_oxeye_daisy.png"
+		]
 	},
 	{
 		"name": "minecraft:brown_mushroom",
 		"id": 39,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/mushroom_brown.png"
+		]
 	},
 	{
 		"name": "minecraft:red_mushroom",
 		"id": 40,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/mushroom_red.png"
+		]
 	},
 	{
 		"name": "minecraft:gold_block",
 		"id": 41,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/gold_block.png"
+		]
 	},
 	{
 		"name": "minecraft:iron_block",
 		"id": 42,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/iron_block.png"
+		]
 	},
 	{
 		"name": "minecraft:double_stone_slab",
 		"id": 43,
 		"maxMeta": 7,
-		"render": "solid",
-		"texture": []
+		"render": "column",
+		"texture": [
+			"blocks/stone_slab_top.png,blocks/stone_slab_side.png,blocks/stone_slab_top.png",
+			"blocks/sandstone_top.png,blocks/sandstone_normal.png,blocks/sandstone_top.png",
+			"blocks/planks_oak.png,blocks/planks_oak.png,blocks/planks_oak.png",
+			"blocks/cobblestone.png,blocks/cobblestone.png,blocks/cobblestone.png",
+			"blocks/brick.png,blocks/brick.png,blocks/brick.png",
+			"blocks/stonebrick.png,blocks/stonebrick.png,blocks/stonebrick.png",
+			"blocks/nether_brick.png,blocks/nether_brick.png,blocks/nether_brick.png",
+			"blocks/quartz_block_side.png,blocks/quartz_block_side.png,blocks/quartz_block_side.png"
+		]
 	},
 	{
 		"name": "minecraft:stone_slab",
 		"id": 44,
 		"maxMeta": 7,
-		"render": "solid",
-		"texture": []
+		"render": "slab",
+		"texture": [
+			"blocks/stone_slab_top.png,blocks/stone_slab_side.png,blocks/stone_slab_top.png",
+			"blocks/sandstone_top.png,blocks/sandstone_normal.png,blocks/sandstone_top.png",
+			"blocks/planks_oak.png,blocks/planks_oak.png,blocks/planks_oak.png",
+			"blocks/cobblestone.png,blocks/cobblestone.png,blocks/cobblestone.png",
+			"blocks/brick.png,blocks/brick.png,blocks/brick.png",
+			"blocks/stonebrick.png,blocks/stonebrick.png,blocks/stonebrick.png",
+			"blocks/nether_brick.png,blocks/nether_brick.png,blocks/nether_brick.png",
+			"blocks/quartz_block_side.png,blocks/quartz_block_side.png,blocks/quartz_block_side.png"
+		]
 	},
 	{
 		"name": "minecraft:brick_block",
 		"id": 45,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/brick.png"
+		]
 	},
 	{
 		"name": "minecraft:tnt",
 		"id": 46,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "column",
+		"texture": [
+			"blocks/tnt_top.png,blocks/tnt_side.png,blocks/tnt_bottom.png"
+		]
 	},
 	{
 		"name": "minecraft:bookshelf",
 		"id": 47,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "column",
+		"texture": [
+			"blocks/planks_oak.png,blocks/bookshelf.png,blocks/planks_oak.png"
+		]
 	},
 	{
 		"name": "minecraft:mossy_cobblestone",
 		"id": 48,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/cobblestone_mossy.png"
+		]
 	},
 	{
 		"name": "minecraft:obsidian",
 		"id": 49,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/obsidian.png"
+		]
 	},
 	{
 		"name": "minecraft:torch",
 		"id": 50,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "torch",
+		"texture": [
+			"blocks/torch_on.png"
+		]
 	},
 	{
 		"name": "minecraft:fire",
 		"id": 51,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "cross",
+		"texture": [
+			"blocks/fire_layer_0.png"
+		]
 	},
 	{
 		"name": "minecraft:mob_spawner",
 		"id": 52,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/mob_spawner.png"
+		]
 	},
 	{
 		"name": "minecraft:oak_stairs",
 		"id": 53,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "stairs",
+		"texture": [
+			"blocks/planks_oak.png"
+		]
 	},
 	{
 		"name": "minecraft:chest",
 		"id": 54,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "chest",
+		"texture": [
+			"entity/chest/normal.png",
+			"entity/chest/normal_double.png"
+		]
 	},
 	{
 		"name": "minecraft:redstone_wire",
 		"id": 55,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "redstone",
+		"texture": [
+			"blocks/redstone_dust_dot.png",
+			"blocks/redstone_dust_line0.png",
+			"blocks/redstone_dust_line1.png"
+		]
 	},
 	{
 		"name": "minecraft:diamond_ore",
 		"id": 56,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/diamond_ore.png"
+		]
 	},
 	{
 		"name": "minecraft:diamond_block",
 		"id": 57,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/diamond_block.png"
+		]
 	},
 	{
 		"name": "minecraft:crafting_table",
 		"id": 58,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "column",
+		"texture": [
+			"blocks/crafting_table_top.png,blocks/crafting_table_front.png,blocks/planks_oak.png"
+		]
 	},
 	{
 		"name": "minecraft:wheat",
