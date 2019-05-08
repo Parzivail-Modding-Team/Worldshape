@@ -610,190 +610,256 @@
 		"name": "minecraft:wheat",
 		"id": 59,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "wheat",
+		"texture": [
+			"blocks/wheat_stage_0.png",
+			"blocks/wheat_stage_1.png",
+			"blocks/wheat_stage_2.png",
+			"blocks/wheat_stage_3.png",
+			"blocks/wheat_stage_4.png",
+			"blocks/wheat_stage_5.png",
+			"blocks/wheat_stage_6.png",
+			"blocks/wheat_stage_7.png"
+		]
 	},
 	{
 		"name": "minecraft:farmland",
 		"id": 60,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "farmland",
+		"texture": [
+			"blocks/farmland_dry.png,blocks/dirt.png,blocks/dirt.png",
+			"blocks/farmland_wet.png,blocks/dirt.png,blocks/dirt.png"
+		]
 	},
 	{
 		"name": "minecraft:furnace",
 		"id": 61,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "furnace",
+		"texture": [
+			"blocks/furnace_top.png,blocks/furnace_front_off.png,blocks/furnace_side.png,blocks/furnace_top.png"
+		]
 	},
 	{
 		"name": "minecraft:lit_furnace",
 		"id": 62,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "furnace",
+		"texture": [
+			"blocks/furnace_top.png,blocks/furnace_front_on.png,blocks/furnace_side.png,blocks/furnace_top.png"
+		]
 	},
 	{
 		"name": "minecraft:standing_sign",
 		"id": 63,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "sign",
+		"texture": [
+			"entity/sign.png"
+		]
 	},
 	{
 		"name": "minecraft:wooden_door",
 		"id": 64,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "door",
+		"texture": [
+			"blocks/door_wood_lower.png",
+			"blocks/door_wood_upper.png"
+		]
 	},
 	{
 		"name": "minecraft:ladder",
 		"id": 65,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "ladder",
+		"texture": [
+			"blocks/ladder.png"
+		]
 	},
 	{
 		"name": "minecraft:rail",
 		"id": 66,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "rail",
+		"texture": [
+			"blocks/rail_normal.png",
+			"blocks/rail_normal_turned.png"
+		]
 	},
 	{
 		"name": "minecraft:stone_stairs",
 		"id": 67,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "stairs",
+		"texture": [
+			"blocks/stonebrick.png"
+		]
 	},
 	{
 		"name": "minecraft:wall_sign",
 		"id": 68,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "wallsign",
+		"texture": [
+			"entity/sign.png"
+		]
 	},
 	{
 		"name": "minecraft:lever",
 		"id": 69,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "lever",
+		"texture": [
+			"blocks/lever.png",
+			"blocks/stone.png"
+		]
 	},
 	{
 		"name": "minecraft:stone_pressure_plate",
 		"id": 70,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "pressureplate",
+		"texture": [
+			"blocks/stone.png"
+		]
 	},
 	{
 		"name": "minecraft:iron_door",
 		"id": 71,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "door",
+		"texture": [
+			"blocks/door_iron_lower.png",
+			"blocks/door_iron_upper.png"
+		]
 	},
 	{
 		"name": "minecraft:wooden_pressure_plate",
 		"id": 72,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "pressureplate",
+		"texture": [
+			"blocks/planks_oak.png"
+		]
 	},
 	{
 		"name": "minecraft:redstone_ore",
 		"id": 73,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/redstone_ore.png"
+		]
 	},
 	{
 		"name": "minecraft:lit_redstone_ore",
 		"id": 74,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/redstone_ore.png"
+		]
 	},
 	{
 		"name": "minecraft:unlit_redstone_torch",
 		"id": 75,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "torch",
+		"texture": [
+			"blocks/redstone_torch_off.png"
+		]
 	},
 	{
 		"name": "minecraft:redstone_torch",
 		"id": 76,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "torch",
+		"texture": [
+			"blocks/redstone_torch_off.png"
+		]
 	},
 	{
 		"name": "minecraft:stone_button",
 		"id": 77,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "button",
+		"texture": [
+			"blocks/stone.png"
+		]
 	},
 	{
 		"name": "minecraft:snow_layer",
 		"id": 78,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "layer",
+		"texture": [
+			"blocks/snow.png"
+		]
 	},
 	{
 		"name": "minecraft:ice",
 		"id": 79,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "transparent",
+		"texture": [
+			"blocks/ice.png"
+		]
 	},
 	{
 		"name": "minecraft:snow",
 		"id": 80,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/snow.png"
+		]
 	},
 	{
 		"name": "minecraft:cactus",
 		"id": 81,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "cactus",
+		"texture": [
+			"blocks/cactus.png"
+		]
 	},
 	{
 		"name": "minecraft:clay",
 		"id": 82,
 		"maxMeta": 0,
 		"render": "solid",
-		"texture": []
+		"texture": [
+			"blocks/clay.png"
+		]
 	},
 	{
 		"name": "minecraft:reeds",
 		"id": 83,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "skinny",
+		"texture": [
+			"blocks/reeds.png"
+		]
 	},
 	{
 		"name": "minecraft:jukebox",
 		"id": 84,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "column",
+		"texture": [
+			"blocks/jukebox_top.png,blocks/jukebox_side.png,blocks/jukebox_side.png"
+		]
 	},
 	{
 		"name": "minecraft:fence",
 		"id": 85,
 		"maxMeta": 0,
-		"render": "solid",
-		"texture": []
+		"render": "fence",
+		"texture": [
+			"blocks/planks_oak.png"
+		]
 	},
 	{
 		"name": "minecraft:pumpkin",
