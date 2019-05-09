@@ -95,7 +95,7 @@
 			"name": "minecraft:flowing_water",
 			"id": 8,
 			"maxMeta": 0,
-			"render": "solid",
+			"render": "liquid",
 			"texture": [
 				"blocks/water_flow.png"
 			]
@@ -104,7 +104,7 @@
 			"name": "minecraft:water",
 			"id": 9,
 			"maxMeta": 0,
-			"render": "solid",
+			"render": "liquid",
 			"texture": [
 				"blocks/water_still.png"
 			]
@@ -113,7 +113,7 @@
 			"name": "minecraft:flowing_lava",
 			"id": 10,
 			"maxMeta": 0,
-			"render": "solid",
+			"render": "liquid",
 			"texture": [
 				"blocks/lava_flow.png"
 			]
@@ -122,7 +122,7 @@
 			"name": "minecraft:lava",
 			"id": 11,
 			"maxMeta": 0,
-			"render": "solid",
+			"render": "liquid",
 			"texture": [
 				"blocks/lava_still.png"
 			]

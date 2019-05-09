@@ -8,9 +8,9 @@ namespace Worldshape.Queue
     class JobPregenerateChunks : IJob
     {
         private readonly Structure _structure;
-        private readonly RenderAtlas _texAtlas;
+        private readonly BlockAtlas _texAtlas;
 
-        public JobPregenerateChunks(Structure structure, RenderAtlas texAtlas)
+        public JobPregenerateChunks(Structure structure, BlockAtlas texAtlas)
         {
             _structure = structure;
             _texAtlas = texAtlas;

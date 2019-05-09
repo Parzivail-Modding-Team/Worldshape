@@ -8,7 +8,7 @@ namespace Worldshape.Graphics.Buffer
         public object LockHandle;
         public List<Vertex> VertexBuffer;
         public List<Vertex> NormalBuffer;
-        public List<TexCoord> TexCoordBuffer;
+        public List<Uv> TexCoordBuffer;
         public List<int> IndexBuffer;
         public int Length;
 
@@ -17,7 +17,7 @@ namespace Worldshape.Graphics.Buffer
             LockHandle = new object();
             VertexBuffer = new List<Vertex>();
             NormalBuffer = new List<Vertex>();
-            TexCoordBuffer = new List<TexCoord>();
+            TexCoordBuffer = new List<Uv>();
             IndexBuffer = new List<int>();
             Length = 0;
         }
@@ -33,13 +33,13 @@ namespace Worldshape.Graphics.Buffer
             }
         }
 
-        public int Append(Vertex pos, Vertex normal, TexCoord texCoord)
+        public int Append(Vertex pos, Vertex normal, Uv uv)
         {
             lock (LockHandle)
             {
                 VertexBuffer.Add(pos);
                 NormalBuffer.Add(normal);
-                TexCoordBuffer.Add(texCoord);
+                TexCoordBuffer.Add(uv);
                 IndexBuffer.Add(Length);
                 Length++;
                 return Length - 1;

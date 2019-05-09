@@ -50,7 +50,7 @@ namespace Worldshape.Graphics.Buffer
                         GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
                     }
 
-                    // TexCoord Array Buffer
+                    // Uv Array Buffer
                     {
                         // Generate Array Buffer Id
                         if (TexCoordBufferId == -1)
@@ -60,15 +60,15 @@ namespace Worldshape.Graphics.Buffer
                         GL.BindBuffer(BufferTarget.ArrayBuffer, TexCoordBufferId);
 
                         // Send data to buffer
-                        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(buffer.Length * TexCoord.Size),
+                        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(buffer.Length * Uv.Size),
                             buffer.TexCoordBuffer.ToArray(), 
                             BufferUsageHint.StaticDraw);
 
                         // Validate that the buffer is the correct size
                         GL.GetBufferParameter(BufferTarget.ArrayBuffer, BufferParameterName.BufferSize,
                             out int bufferSize);
-                        if (buffer.Length * TexCoord.Size != bufferSize)
-                            throw new ApplicationException("TexCoord array not uploaded correctly");
+                        if (buffer.Length * Uv.Size != bufferSize)
+                            throw new ApplicationException("Uv array not uploaded correctly");
 
                         // Clear the buffer Binding
                         GL.BindBuffer(BufferTarget.ArrayBuffer, 0);

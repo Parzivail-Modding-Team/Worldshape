@@ -1,13 +1,13 @@
 ﻿namespace Worldshape.Graphics.Texture
 {
-    public class Texture
+    public class TexCoord
     {
         public float MinU { get; }
         public float MinV { get; }
         public float MaxU { get; }
         public float MaxV { get; }
 
-        public Texture(float minU, float minV, float maxU, float maxV)
+        public TexCoord(float minU, float minV, float maxU, float maxV)
         {
             MinU = minU;
             MinV = minV;
@@ -15,7 +15,7 @@
             MaxV = maxV;
         }
 
-        protected bool Equals(Texture other)
+        protected bool Equals(TexCoord other)
         {
             return MinU.Equals(other.MinU) && MinV.Equals(other.MinV) && MaxU.Equals(other.MaxU) && MaxV.Equals(other.MaxV);
         }
@@ -26,7 +26,7 @@
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Texture) obj);
+            return Equals((TexCoord) obj);
         }
 
         /// <inheritdoc />
@@ -42,12 +42,12 @@
             }
         }
 
-        public static bool operator ==(Texture left, Texture right)
+        public static bool operator ==(TexCoord left, TexCoord right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Texture left, Texture right)
+        public static bool operator !=(TexCoord left, TexCoord right)
         {
             return !Equals(left, right);
         }

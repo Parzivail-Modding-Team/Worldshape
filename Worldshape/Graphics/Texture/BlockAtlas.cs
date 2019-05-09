@@ -9,25 +9,38 @@ using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
 using Worldshape.Configuration;
 using Worldshape.Layout;
+using Worldshape.Logging;
 
 namespace Worldshape.Graphics.Texture
 {
-    public class RenderAtlas
+    public class BlockAtlas
     {
         private readonly Dictionary<string, BlockRenderData> _atlas = new Dictionary<string, BlockRenderData>();
         public BlockRenderData this[string name] => _atlas.TryGetValue(name, out var value) ? value : null;
         public int Texture { get; }
 
-        public RenderAtlas(MappingEngine mappings, int textureResolution)
+        public BlockAtlas(MappingEngine mappings, int textureResolution)
         {
+			Lumberjack.Debug("Generating texture atlas");
             var pointers = new List<TexturePointer>();
             var resolution = new Size(textureResolution, textureResolution);
             foreach (var set in mappings.Mappings)
             {
-                if (set.Texture.Count == 0)
-                    continue;
-                foreach (var texture in set.Texture)
-                    pointers.Add(new TexturePointer(set.Name, Path.Combine(set.TextureDir, texture.Split(',')[0]), resolution));
+	            if (set.Texture.Count == 0)
+		            continue;
+	            foreach (var texture in set.Texture)
+	            {
+		            if (texture.Contains(","))
+		            {
+			            var subTextures = texture.Split(',');
+			            pointers.AddRange(subTextures.Select((subTexture, i) => new TexturePointer($"{set.Name}${i}", Path.Combine(set.TextureDir, subTexture), resolution)));
+		            }
+		            else
+					{
+						pointers.Add(new TexturePointer(set.Name, Path.Combine(set.TextureDir, texture),
+							resolution));
+					}
+	            }
             }
 
             var size = 1024;
@@ -51,17 +64,24 @@ namespace Worldshape.Graphics.Texture
                     var maxU = (pointer.Position.X + pointer.Size.Width) / (float)size;
                     var maxV = (pointer.Position.Y + pointer.Size.Height) / (float)size;
 
-                    if (!_atlas.ContainsKey(pointer.TextureName))
-                        _atlas.Add(pointer.TextureName, new BlockRenderData(mappings[pointer.TextureName]));
+                    var blockname = pointer.TextureName.Split('$')[0];
 
-                    _atlas[pointer.TextureName].Textures.Add(new Texture(minU, minV, maxU, maxV));
+					if (!_atlas.ContainsKey(blockname))
+                        _atlas.Add(blockname, new BlockRenderData(mappings[blockname]));
+
+                    _atlas[blockname].Textures.Add(new TexCoord(minU, minV, maxU, maxV));
                 }
 
-				if (Program.Config.SaveAtlas)
-					bmpAtlas.Save("debugatlas.png");
+                if (Program.Config.SaveAtlas)
+                {
+	                bmpAtlas.Save("debugatlas.png");
+					Lumberjack.Info("Saved atlas as debugatlas.png");
+                }
+
                 Texture = CreateTexture(bmpAtlas);
-            }
-        }
+			}
+			Lumberjack.Debug($"Packed {pointers.Count} x{textureResolution} textures in a {size}x atlas");
+		}
 
         private static int CreateTexture(Bitmap bitmap)
         {

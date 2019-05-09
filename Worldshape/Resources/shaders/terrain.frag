@@ -16,9 +16,9 @@ void main()
 	vec2 resolution = vec2(512., 512.);
 
     vec3 norm = normalize(fragNormal);
-    vec3 lightDir = normalize(lightPos - fragPos);  
+    vec3 lightDir = normalize(lightPos); // light very far away, use direction only. If light has position: normalize(lightPos - fragPos)  
     float diffuse = max(dot(norm, lightDir), 0.0);
-    float ambient = 0.3;
+    float ambient = 0.5;
 	
     // Look up noise from texture
     vec4 noise = texture(random, gl_FragCoord.xy / resolution.xy);

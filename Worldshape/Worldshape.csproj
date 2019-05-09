@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Configuration\BlockMap.cs" />
     <Compile Include="Configuration\BlockProperties.cs" />
-    <Compile Include="Configuration\Config.cs" />
+    <Compile Include="Configuration\ConfigContainer.cs" />
     <Compile Include="Configuration\MappingEngine.cs" />
     <Compile Include="EmbeddedFiles.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -56,11 +56,18 @@
       <DependentUpon>EmbeddedFiles.resx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StructureExtensions.cs" />
+    <Compile Include="Graphics\Game\BvpCross.cs" />
+    <Compile Include="Graphics\Game\BvpColumn.cs" />
+    <Compile Include="Graphics\Game\BvpSolid.cs" />
+    <Compile Include="Graphics\Game\ChunkRenderer.cs" />
+    <Compile Include="Graphics\Game\IBlockVertexProducer.cs" />
+    <Compile Include="Graphics\Primitive\HsvColor.cs" />
     <Compile Include="Graphics\Texture\TexturePointer.cs" />
-    <Compile Include="Graphics\Texture\Texture.cs" />
-    <Compile Include="Graphics\Texture\RenderAtlas.cs" />
+    <Compile Include="Graphics\Texture\TexCoord.cs" />
+    <Compile Include="Graphics\Texture\BlockAtlas.cs" />
     <Compile Include="Graphics\Texture\BlockRenderData.cs" />
     <Compile Include="Layout\Node.cs" />
+    <Compile Include="Logging\Lumberjack.cs" />
     <Compile Include="Queue\JobPregenerateChunk.cs" />
     <Compile Include="World\Chunk.cs" />
     <Compile Include="Graphics\Buffer\ChunkBuffer.cs" />
@@ -68,7 +75,7 @@
     <Compile Include="Graphics\RenderEngine.cs" />
     <Compile Include="Graphics\Shader\ShaderProgram.cs" />
     <Compile Include="Graphics\Shader\ShaderUniform.cs" />
-    <Compile Include="Graphics\Primitive\TexCoord.cs" />
+    <Compile Include="Graphics\Primitive\Uv.cs" />
     <Compile Include="Graphics\Primitive\Vertex.cs" />
     <Compile Include="Graphics\Buffer\VertexBuffer.cs" />
     <Compile Include="Program.cs" />
@@ -106,6 +113,9 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
     </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.6.3</Version>
+    </PackageReference>
     <PackageReference Include="OpenTK">
       <Version>3.0.1</Version>
     </PackageReference>
@@ -120,5 +130,6 @@
     <Content Include="FodyWeavers.xml" />
     <Content Include="Resources\shaders\random.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

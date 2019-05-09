@@ -32,6 +32,9 @@ namespace Worldshape.Graphics.Buffer
 
         public void Init(int width, int height)
         {
+			if (width == 0 || height == 0)
+				return;
+
 	        Width = width;
 	        Height = height;
             Use();

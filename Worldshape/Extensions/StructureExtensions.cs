@@ -10,7 +10,7 @@ namespace Worldshape.Extensions
 {
     static class StructureExtensions
     {
-        public static bool IsBorderingTransparent(this Structure structure, int x, int y, int z, FaceDir face, RenderAtlas renderAtlas)
+        public static bool IsBorderingTransparent(this Structure structure, int x, int y, int z, FaceDir face, BlockAtlas blockAtlas)
         {
             switch (face.Facing)
             {
@@ -42,23 +42,23 @@ namespace Worldshape.Extensions
                     throw new ArgumentOutOfRangeException();
             }
 
-            return structure.IsTransparent(x + face.X, y + face.Y, z + face.Z, renderAtlas);
+            return structure.IsTransparent(x + face.X, y + face.Y, z + face.Z, blockAtlas);
         }
 
-        public static bool IsBorderingTransparent(this Structure structure, int x, int y, int z, RenderAtlas renderAtlas)
+        public static bool IsBorderingTransparent(this Structure structure, int x, int y, int z, BlockAtlas blockAtlas)
         {
-            return structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, renderAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, renderAtlas) ||
-                   structure.IsBorderingTransparent(x, y, z, FaceDir.PosY, renderAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegY, renderAtlas) ||
-                   structure.IsBorderingTransparent(x, y, z, FaceDir.PosZ, renderAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegZ, renderAtlas);
+            return structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, blockAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, blockAtlas) ||
+                   structure.IsBorderingTransparent(x, y, z, FaceDir.PosY, blockAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegY, blockAtlas) ||
+                   structure.IsBorderingTransparent(x, y, z, FaceDir.PosZ, blockAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegZ, blockAtlas);
         }
 
-        public static bool IsTransparent(this Structure structure, int x, int y, int z, RenderAtlas renderAtlas)
+        public static bool IsTransparent(this Structure structure, int x, int y, int z, BlockAtlas blockAtlas)
         {
             var block = structure[x, y, z];
             if (block == null || block.Id == "minecraft:air")
                 return true;
 
-            var data = renderAtlas[block.Id];
+            var data = blockAtlas[block.Id];
             if (data == null)
                 return false;
 

@@ -15,6 +15,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Worldshape.Configuration;
 using Worldshape.Graphics.Buffer;
+using Worldshape.Graphics.Primitive;
 using Worldshape.Graphics.Shader;
 using Worldshape.Graphics.Texture;
 using Worldshape.Queue;
@@ -54,7 +55,7 @@ namespace Worldshape.Graphics
 
         private Thread _worker;
         private Structure _structure;
-        private RenderAtlas _texAtlas;
+        private BlockAtlas _texAtlas;
 
         public Chunk[] Chunks { get; private set; }
         public Vector3 LightPosition { get; set; }
@@ -78,10 +79,12 @@ namespace Worldshape.Graphics
             _shaderScreen.Init();
             _workerHandle = new EventWaitHandle(false, EventResetMode.ManualReset);
 
+			LightPosition = new Vector3(0.25f, 1, 0.25f);
+
             Chunks = new Chunk[0];
             CreateScreenVao();
 
-            _texAtlas = new RenderAtlas(mappingEngine, 32);
+            _texAtlas = new BlockAtlas(mappingEngine, 32);
         }
 
         private void CreateScreenVao()
@@ -179,6 +182,14 @@ namespace Worldshape.Graphics
             _framebuffer.Use();
             GL.PushMatrix();
 
+            var constrainedTemperature = 0;
+			var h = 0.6222222 - constrainedTemperature * 0.05;
+            var s = 0.5 + constrainedTemperature * 0.1;
+            var v = 1;
+
+            var hsl = HsvColor.ToRgb(h * 360, s, v);
+
+			GL.ClearColor(hsl);
             GL.Clear(ClearBufferMask.ColorBufferBit |
                      ClearBufferMask.DepthBufferBit |
                      ClearBufferMask.StencilBufferBit);

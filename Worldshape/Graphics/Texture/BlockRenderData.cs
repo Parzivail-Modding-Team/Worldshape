@@ -6,12 +6,12 @@ namespace Worldshape.Graphics.Texture
     public class BlockRenderData
     {
         public BlockProperties Properties { get; }
-        public List<Texture> Textures { get; }
+        public List<TexCoord> Textures { get; }
 
         public BlockRenderData(BlockProperties properties)
         {
             Properties = properties;
-            Textures = new List<Texture>();
+            Textures = new List<TexCoord>();
         }
     }
 }

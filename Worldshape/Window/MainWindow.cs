@@ -8,6 +8,7 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using Worldshape.Configuration;
 using Worldshape.Graphics;
+using Worldshape.Logging;
 
 namespace Worldshape.Window
 {
@@ -43,9 +44,10 @@ namespace Worldshape.Window
         }
 
         private void OnLoad(object sender, EventArgs e)
-        {
-            // Set up lighting
-            GL.ShadeModel(ShadingModel.Smooth);
+		{
+			Lumberjack.Debug("Loading window state");
+			// Set up lighting
+			GL.ShadeModel(ShadingModel.Smooth);
             GL.Enable(EnableCap.ColorMaterial);
 
             // Set up caps
@@ -63,11 +65,13 @@ namespace Worldshape.Window
 
             // Init keyboard to ensure first frame won't NPE
             _keyboard = Keyboard.GetState();
-            
-            _mappingEngine = new MappingEngine();
+
+			Lumberjack.Debug("Loading render engine");
+			_mappingEngine = new MappingEngine();
             _renderEngine = new RenderEngine(this, _mappingEngine);
-            
-            _structure = StructureLoader.Load(_args[0]);
+
+			Lumberjack.Debug("Loading world");
+			_structure = StructureLoader.Load(_args[0]);
             _renderEngine.LoadStructure(_structure);
         }
 
@@ -86,6 +90,8 @@ namespace Worldshape.Window
         {
             if (_shouldDie)
                 Exit();
+
+            Title = $"{RenderFrequency} FPS";
 
             // Grab the new keyboard state
             _keyboard = Keyboard.GetState();

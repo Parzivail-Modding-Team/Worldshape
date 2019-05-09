@@ -9,7 +9,7 @@ using Nett;
 
 namespace Worldshape.Configuration
 {
-	class Config
+	class ConfigContainer
 	{
 		private const string ConfigFile = "config.toml";
 
@@ -21,11 +21,11 @@ namespace Worldshape.Configuration
 		 TomlComment("Whether or not to unpack the provided assets")]
 		public bool UnpackTextures { get; set; } = true;
 
-		public static Config Load()
+		public static ConfigContainer Load()
 		{
 			if (!File.Exists(ConfigFile))
-				new Config().Save();
-			return Toml.ReadFile<Config>(ConfigFile);
+				new ConfigContainer().Save();
+			return Toml.ReadFile<ConfigContainer>(ConfigFile);
 		}
 
 		public void Save()
