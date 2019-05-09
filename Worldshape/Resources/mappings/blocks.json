@@ -1,6 +1,6 @@
 {
 	"minecraft": "1.12.2",
-	"textureDir": "assets/minecraft/textures/",
+	"textureDir": "Resources/assets/minecraft/textures/",
 	"entries": [
 		{
 			"name": "minecraft:air",

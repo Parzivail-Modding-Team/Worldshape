@@ -27,7 +27,7 @@ namespace Worldshape.Graphics.Texture
                 if (set.Texture.Count == 0)
                     continue;
                 foreach (var texture in set.Texture)
-                    pointers.Add(new TexturePointer(set.Name, Path.Combine("E:\\Forge\\F32-1.12", set.TextureDir, texture.Split(',')[0]), resolution));
+                    pointers.Add(new TexturePointer(set.Name, Path.Combine(set.TextureDir, texture.Split(',')[0]), resolution));
             }
 
             var size = 1024;
@@ -57,7 +57,8 @@ namespace Worldshape.Graphics.Texture
                     _atlas[pointer.TextureName].Textures.Add(new Texture(minU, minV, maxU, maxV));
                 }
 
-                bmpAtlas.Save("E:\\colby\\Desktop\\atlas.png");
+				if (Program.Config.SaveAtlas)
+					bmpAtlas.Save("debugatlas.png");
                 Texture = CreateTexture(bmpAtlas);
             }
         }
