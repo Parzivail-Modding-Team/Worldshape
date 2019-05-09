@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Worldshape.Configuration
 {
-	internal class BlockMapping
+    public class BlockProperties
 	{
 		[JsonProperty("name", Required = Required.Always)]
 		public string Name { get; set; }
@@ -22,5 +22,8 @@ namespace Worldshape.Configuration
 
 		[JsonProperty("texture", Required = Required.Always)]
 		public List<string> Texture { get; set; }
+
+        [JsonIgnore]
+		internal string TextureDir { get; set; }
 	}
 }

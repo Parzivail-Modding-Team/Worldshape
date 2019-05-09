@@ -8,20 +8,20 @@ namespace Worldshape.Queue
     class JobPregenerateChunks : IJob
     {
         private readonly Structure _structure;
-        private readonly TextureAtlas _texAtlas;
+        private readonly RenderAtlas _texAtlas;
 
-        public JobPregenerateChunks(Structure structure, TextureAtlas texAtlas)
+        public JobPregenerateChunks(Structure structure, RenderAtlas texAtlas)
         {
             _structure = structure;
             _texAtlas = texAtlas;
         }
 
-        public void Execute(RenderManager renderManager)
+        public void Execute(RenderEngine renderEngine)
         {
-            Parallel.ForEach(renderManager.Chunks, chunk =>
+            Parallel.ForEach(renderEngine.Chunks, chunk =>
             {
                 chunk.Prerender(_structure, _texAtlas);
-                renderManager.EnqueueJob(new JobRenderChunk(chunk));
+                renderEngine.EnqueueJob(new JobRenderChunk(chunk));
             });
         }
 

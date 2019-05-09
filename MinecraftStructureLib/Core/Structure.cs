@@ -31,54 +31,6 @@ namespace MinecraftStructureLib.Core
         {
             return x >= 0 && y >= 0 && z >= 0 && x < Width && y < Height && z < Length;
         }
-
-        public bool IsBorderingAir(int x, int y, int z, FaceDir face)
-        {
-            switch (face.Facing)
-            {
-                case FaceDir.Dir.PosX:
-                    if (x == Width - 1)
-                        return true;
-                    break;
-                case FaceDir.Dir.NegX:
-                    if (x == 0)
-                        return true;
-                    break;
-                case FaceDir.Dir.PosY:
-                    if (y == Height - 1)
-                        return true;
-                    break;
-                case FaceDir.Dir.NegY:
-                    if (y == 0)
-                        return true;
-                    break;
-                case FaceDir.Dir.PosZ:
-                    if (z == Length - 1)
-                        return true;
-                    break;
-                case FaceDir.Dir.NegZ:
-                    if (z == 0)
-                        return true;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            return IsAir(x + face.X, y + face.Y, z + face.Z);
-        }
-
-        public bool IsBorderingAir(int x, int y, int z)
-        {
-            return IsBorderingAir(x, y, z, FaceDir.PosX) || IsBorderingAir(x, y, z, FaceDir.NegX) ||
-                   IsBorderingAir(x, y, z, FaceDir.PosY) || IsBorderingAir(x, y, z, FaceDir.NegY) ||
-                   IsBorderingAir(x, y, z, FaceDir.PosZ) || IsBorderingAir(x, y, z, FaceDir.NegZ);
-        }
-
-        public bool IsAir(int x, int y, int z)
-        {
-            var block = this[x, y, z];
-            return block == null || block.Id == "minecraft:air";
-        }
     }
 
     public class FaceDir

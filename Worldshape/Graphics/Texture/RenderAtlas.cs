@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
+using Worldshape.Configuration;
 using Worldshape.Layout;
 
 namespace Worldshape.Graphics.Texture
 {
-    public class TextureAtlas
+    public class RenderAtlas
     {
-        private readonly Dictionary<string, Texture> _atlas = new Dictionary<string, Texture>();
-        public Texture this[string name] => _atlas.TryGetValue(name, out var value) ? value : null;
+        private readonly Dictionary<string, BlockRenderData> _atlas = new Dictionary<string, BlockRenderData>();
+        public BlockRenderData this[string name] => _atlas.TryGetValue(name, out var value) ? value : null;
         public int Texture { get; }
 
-        public TextureAtlas(List<KeyValuePair<string, string>> textures, int textureResolution)
+        public RenderAtlas(MappingEngine mappings, int textureResolution)
         {
-            var pointers = textures.Select(pair => new ImagePointer(pair.Key, pair.Value, new Size(textureResolution, textureResolution))).ToArray();
-//            var size = (int)Math.Ceiling(Math.Sqrt(textures.Count * textureResolution));
-//            // Round up to nearest power of two
-//            size = ToNextPow2(size);
-            var size = 512;
+            var pointers = new List<TexturePointer>();
+            var resolution = new Size(textureResolution, textureResolution);
+            foreach (var set in mappings.Mappings)
+            {
+                if (set.Texture.Count == 0)
+                    continue;
+                foreach (var texture in set.Texture)
+                    pointers.Add(new TexturePointer(set.Name, Path.Combine("E:\\Forge\\F32-1.12", set.TextureDir, texture.Split(',')[0]), resolution));
+            }
+
+            var size = 1024;
             var packed = Pack(size, size, pointers);
             if (!packed)
                 throw new ArgumentException("Failed to create texture atlas, atlas too small!");
@@ -43,9 +51,13 @@ namespace Worldshape.Graphics.Texture
                     var maxU = (pointer.Position.X + pointer.Size.Width) / (float)size;
                     var maxV = (pointer.Position.Y + pointer.Size.Height) / (float)size;
 
-                    _atlas.Add(pointer.TextureName, new Texture(minU, minV, maxU, maxV));
+                    if (!_atlas.ContainsKey(pointer.TextureName))
+                        _atlas.Add(pointer.TextureName, new BlockRenderData(mappings[pointer.TextureName]));
+
+                    _atlas[pointer.TextureName].Textures.Add(new Texture(minU, minV, maxU, maxV));
                 }
 
+                bmpAtlas.Save("E:\\colby\\Desktop\\atlas.png");
                 Texture = CreateTexture(bmpAtlas);
             }
         }
@@ -84,7 +96,7 @@ namespace Worldshape.Graphics.Texture
             return x + 1;
         }
 
-        private static bool Pack(int width, int height, ImagePointer[] children)
+        private static bool Pack(int width, int height, IEnumerable<TexturePointer> children)
         {
             var startNode = new Node
             {

@@ -12,7 +12,7 @@ namespace Worldshape.Queue
             _chunk = chunk;
         }
 
-        public void Execute(RenderManager renderManager)
+        public void Execute(RenderEngine renderEngine)
         {
             _chunk.Render();
         }

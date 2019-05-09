@@ -13,6 +13,7 @@ using MinecraftStructureLib.Core;
 using MinecraftStructureLib.Core.Translation;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using Worldshape.Configuration;
 using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Shader;
 using Worldshape.Graphics.Texture;
@@ -21,12 +22,13 @@ using Worldshape.World;
 
 namespace Worldshape.Graphics
 {
-    public class RenderManager
+    public class RenderEngine
     {
         private readonly ConcurrentQueue<IJob> _fgJobs;
         private readonly ConcurrentQueue<IJob> _bgJobs;
         private readonly EventWaitHandle _workerHandle;
         private readonly GameWindow _window;
+        private readonly MappingEngine _mappingEngine;
 
 //        private readonly NvgContext _nvg;
 //        private readonly PerfGraph _perfGraphFps;
@@ -52,14 +54,15 @@ namespace Worldshape.Graphics
 
         private Thread _worker;
         private Structure _structure;
-        private TextureAtlas _texAtlas;
+        private RenderAtlas _texAtlas;
 
         public Chunk[] Chunks { get; private set; }
         public Vector3 LightPosition { get; set; }
         
-        public RenderManager(GameWindow window)
+        public RenderEngine(GameWindow window, MappingEngine mappingEngine)
         {
             _window = window;
+            _mappingEngine = mappingEngine;
 
             _fgJobs = new ConcurrentQueue<IJob>();
             _bgJobs = new ConcurrentQueue<IJob>();
@@ -78,18 +81,7 @@ namespace Worldshape.Graphics
             Chunks = new Chunk[0];
             CreateScreenVao();
 
-            var textures = new List<KeyValuePair<string, string>>();
-            // TODO
-//            var files = Directory.GetFiles("ASSETSDIR");
-//            var mapping = TranslationMap.Minecraft12;
-//            foreach (var entry in mapping)
-//            {
-//                var first = files.FirstOrDefault(path =>
-//                    Path.GetFileNameWithoutExtension(path) == entry.Value.Split(':')[1]);
-//                if (first != null)
-//                    textures.Add(new KeyValuePair<string, string>(entry.Value, first));
-//            }
-            _texAtlas = new TextureAtlas(textures, 16);
+            _texAtlas = new RenderAtlas(mappingEngine, 32);
         }
 
         private void CreateScreenVao()

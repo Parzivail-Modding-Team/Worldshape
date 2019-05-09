@@ -6,6 +6,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
+using Worldshape.Configuration;
 using Worldshape.Graphics;
 
 namespace Worldshape.Window
@@ -15,7 +16,8 @@ namespace Worldshape.Window
         private readonly string[] _args;
         private bool _shouldDie;
         private KeyboardState _keyboard;
-        private RenderManager _renderManager;
+        private RenderEngine _renderEngine;
+        private MappingEngine _mappingEngine;
 
         private float _zoom = 1;
         private float _prevZoom = 1;
@@ -62,21 +64,22 @@ namespace Worldshape.Window
             // Init keyboard to ensure first frame won't NPE
             _keyboard = Keyboard.GetState();
             
-            _renderManager = new RenderManager(this);
+            _mappingEngine = new MappingEngine();
+            _renderEngine = new RenderEngine(this, _mappingEngine);
             
             _structure = StructureLoader.Load(_args[0]);
-            _renderManager.LoadStructure(_structure);
+            _renderEngine.LoadStructure(_structure);
         }
 
         private void OnClose(object sender, CancelEventArgs e)
         {
-            _renderManager.Kill();
+            _renderEngine.Kill();
         }
 
         private void OnResize(object sender, EventArgs e)
         {
             GL.Viewport(ClientRectangle);
-            _renderManager.OnResize();
+            _renderEngine.OnResize();
         }
 
         private void OnUpdate(object sender, FrameEventArgs e)
@@ -113,7 +116,7 @@ namespace Worldshape.Window
                 }
             }
 
-            _renderManager.Update();
+            _renderEngine.Update();
 
             _updateTimeAccumulator = 0;
         }
@@ -146,7 +149,7 @@ namespace Worldshape.Window
             var mLocalTranslate = Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
             var mView = mLocalTranslate * mRotY * mRotX * mScale * mTranslate;
 
-            _renderManager.Render(mModel, mView, mProjection);
+            _renderEngine.Render(mModel, mView, mProjection);
 
             // Swap the graphics buffer
             SwapBuffers();

@@ -23,7 +23,10 @@ void main()
     // Look up noise from texture
     vec4 noise = texture(random, gl_FragCoord.xy / resolution.xy);
     
-    color = vec4(texture(atlas, fragTexCoord).rgb * clamp(ambient + diffuse, 0, 1), 1.);
+	vec4 samp = texture(atlas, fragTexCoord);
+	if(samp.a < 0.5)
+		discard;
+    color = vec4(samp.rgb * clamp(ambient + diffuse, 0, 1), samp.a);
 
     color += vec4(vec3((noise.r - 0.5) / 255.0), 0.0);
 }

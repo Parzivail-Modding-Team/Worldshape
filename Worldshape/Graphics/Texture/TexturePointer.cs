@@ -2,14 +2,14 @@
 
 namespace Worldshape.Graphics.Texture
 {
-    internal class ImagePointer
+    internal class TexturePointer
     {
         public string TextureName { get; }
         public string TexturePath { get; }
         public Size Size { get; }
         public Point Position { get; set; }
 
-        public ImagePointer(string textureName, string texturePath, Size size)
+        public TexturePointer(string textureName, string texturePath, Size size)
         {
             TextureName = textureName;
             TexturePath = texturePath;
@@ -17,7 +17,7 @@ namespace Worldshape.Graphics.Texture
             Position = default;
         }
 
-        protected bool Equals(ImagePointer other)
+        protected bool Equals(TexturePointer other)
         {
             return string.Equals(TextureName, other.TextureName) && string.Equals(TexturePath, other.TexturePath) && Size.Equals(other.Size);
         }
@@ -28,7 +28,7 @@ namespace Worldshape.Graphics.Texture
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ImagePointer) obj);
+            return Equals((TexturePointer) obj);
         }
 
         /// <inheritdoc />
@@ -43,12 +43,12 @@ namespace Worldshape.Graphics.Texture
             }
         }
 
-        public static bool operator ==(ImagePointer left, ImagePointer right)
+        public static bool operator ==(TexturePointer left, TexturePointer right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(ImagePointer left, ImagePointer right)
+        public static bool operator !=(TexturePointer left, TexturePointer right)
         {
             return !Equals(left, right);
         }

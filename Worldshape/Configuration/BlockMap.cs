@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Worldshape.Configuration
 {
-	class BlockMap
+    public class BlockMap
 	{
 		[JsonProperty("minecraft", Required = Required.Always)]
 		public string MinecraftVersion { get; set; }
@@ -16,6 +16,6 @@ namespace Worldshape.Configuration
 		public string RootTextureDir { get; set; }
 
 		[JsonProperty("entries", Required = Required.Always)]
-		public List<BlockMapping> Entries { get; set; }
+		public List<BlockProperties> Entries { get; set; }
 	}
 }

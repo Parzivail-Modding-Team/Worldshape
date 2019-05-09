@@ -7,8 +7,8 @@ namespace Worldshape.Queue
         /// <summary>
         /// Executes the job with the specified render context
         /// </summary>
-        /// <param name="renderManager"></param>
-        void Execute(RenderManager renderManager);
+        /// <param name="renderEngine"></param>
+        void Execute(RenderEngine renderEngine);
 
         /// <summary>
         /// Returns true if the job doesn't need to be a part of the UI thread

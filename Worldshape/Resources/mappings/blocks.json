@@ -31,7 +31,7 @@
 			"render": "column",
 			"tint": true,
 			"texture": [
-				"blocks/grass.png,blocks/grass_side.png,blocks/dirt.png"
+				"blocks/grass_top.png,blocks/grass_side.png,blocks/dirt.png"
 			]
 		},
 		{
@@ -240,9 +240,9 @@
 			"id": 23,
 			"maxMeta": 0,
 			"render": "dispenser",
-			"texture": [
-				"blocks/dispeser_front_horizontal.png,blocks/dispeser_front_vertical.png,blocks/furnace_side.png,blocks/furnace_top.png"
-			]
+      "texture": [
+        "blocks/dispenser_front_horizontal.png,blocks/dispenser_front_vertical.png,blocks/furnace_side.png,blocks/furnace_top.png"
+      ]
 		},
 		{
 			"name": "minecraft:sandstone",
@@ -386,15 +386,15 @@
 				"blocks/wool_colored_black.png"
 			]
 		},
-		{
-			"name": "minecraft:yellow_flower",
-			"id": 37,
-			"maxMeta": 0,
-			"render": "solid",
-			"texture": [
-				"blocks/flower_dandelion.png"
-			]
-		},
+    {
+      "name": "minecraft:yellow_flower",
+      "id": 37,
+      "maxMeta": 0,
+      "render": "cross",
+      "texture": [
+        "blocks/flower_dandelion.png"
+      ]
+    },
 		{
 			"name": "minecraft:red_flower",
 			"id": 38,
@@ -824,9 +824,9 @@
 			"id": 81,
 			"maxMeta": 0,
 			"render": "cactus",
-			"texture": [
-				"blocks/cactus.png"
-			]
+      "texture": [
+        "blocks/cactus_top.png,blocks/cactus_side.png,blocks/cactus_bottom.png"
+      ]
 		},
 		{
 			"name": "minecraft:clay",
