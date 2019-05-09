@@ -780,7 +780,7 @@
 			"maxMeta": 0,
 			"render": "torch",
 			"texture": [
-				"blocks/redstone_torch_off.png"
+				"blocks/redstone_torch_on.png"
 			]
 		},
 		{
