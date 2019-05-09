@@ -48,10 +48,11 @@ namespace Worldshape.World
 
                         if (tex != null)
                         {
-                            tc00 = new TexCoord(tex.MinU, tex.MinV);
-                            tc10 = new TexCoord(tex.MaxU, tex.MinV);
-                            tc01 = new TexCoord(tex.MinU, tex.MaxV);
-                            tc11 = new TexCoord(tex.MaxU, tex.MaxV);
+                            var d = 0.0002f; // bleed compensation
+                            tc00 = new TexCoord(tex.MinU + d, tex.MinV + d);
+                            tc10 = new TexCoord(tex.MaxU - d, tex.MinV + d);
+                            tc01 = new TexCoord(tex.MinU + d, tex.MaxV - d);
+                            tc11 = new TexCoord(tex.MaxU - d, tex.MaxV - d);
                         }
 
                         switch (texData.Properties.Render)
