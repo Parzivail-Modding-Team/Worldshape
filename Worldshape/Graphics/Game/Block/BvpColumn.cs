@@ -4,11 +4,11 @@ using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Primitive;
 using Worldshape.Graphics.Texture;
 
-namespace Worldshape.Graphics.Game
+namespace Worldshape.Graphics.Game.Block
 {
-	class BvpSolid : IBlockVertexProducer
+	class BvpColumn : IBlockVertexProducer
 	{
-		public static readonly BvpSolid Instance = new BvpSolid();
+		public static readonly BvpColumn Instance = new BvpColumn();
 
 		public void Render(Structure structure, int x, int y, int z, BlockAtlas blockAtlas, ChunkBuffer vbi)
 		{

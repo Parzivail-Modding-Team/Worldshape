@@ -3,7 +3,7 @@ using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Primitive;
 using Worldshape.Graphics.Texture;
 
-namespace Worldshape.Graphics.Game
+namespace Worldshape.Graphics.Game.Block
 {
 	class BvpCross : IBlockVertexProducer
 	{

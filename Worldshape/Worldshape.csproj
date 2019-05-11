@@ -56,9 +56,9 @@
       <DependentUpon>EmbeddedFiles.resx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\StructureExtensions.cs" />
-    <Compile Include="Graphics\Game\BvpCross.cs" />
-    <Compile Include="Graphics\Game\BvpColumn.cs" />
-    <Compile Include="Graphics\Game\BvpSolid.cs" />
+    <Compile Include="Graphics\Game\Block\BvpCross.cs" />
+    <Compile Include="Graphics\Game\Block\BvpColumn.cs" />
+    <Compile Include="Graphics\Game\Block\BvpSolid.cs" />
     <Compile Include="Graphics\Game\ChunkRenderer.cs" />
     <Compile Include="Graphics\Game\IBlockVertexProducer.cs" />
     <Compile Include="Graphics\Primitive\HsvColor.cs" />

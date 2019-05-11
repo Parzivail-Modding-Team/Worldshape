@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MinecraftStructureLib.Core;
 using Worldshape.Graphics.Buffer;
+using Worldshape.Graphics.Game.Block;
 using Worldshape.Graphics.Texture;
 
 namespace Worldshape.Graphics.Game
