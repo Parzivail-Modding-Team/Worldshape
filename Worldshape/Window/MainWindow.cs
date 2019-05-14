@@ -19,13 +19,13 @@ namespace Worldshape.Window
         private KeyboardState _keyboard;
         private RenderEngine _renderEngine;
         private MappingEngine _mappingEngine;
+        private Camera _camera;
 
         private float _zoom = 1;
         private float _prevZoom = 1;
         private Vector2 _translation = new Vector2(0, -25);
-        private Vector2 _prevTranslation = new Vector2(0, -25);
-        private Vector2 _rotation = new Vector2(160, 45);
-        private Vector2 _prevRotation = new Vector2(160, 45);
+        private Vector3 _prevTranslation;
+        private Vector3 _prevLook;
 
         private double _updateTimeAccumulator = 0;
 
@@ -70,6 +70,8 @@ namespace Worldshape.Window
 			_mappingEngine = new MappingEngine();
             _renderEngine = new RenderEngine(this, _mappingEngine);
 
+            _camera = new Camera();
+
 			Lumberjack.Debug("Loading world");
 			_structure = StructureLoader.Load(_args[0]);
             _renderEngine.LoadStructure(_structure);
@@ -101,25 +103,34 @@ namespace Worldshape.Window
             var amount = _keyboard[Key.LShift] || _keyboard[Key.RShift] ? 45 : 90;
 
             _prevZoom = _zoom;
-            _prevTranslation = new Vector2(_translation.X, _translation.Y);
-            _prevRotation = new Vector2(_rotation.X, _rotation.Y);
+            _prevTranslation = _camera.Position;
+            _prevLook = _camera.GetForward();
 
             if (Focused)
             {
-                if (_keyboard[Key.Left])
-                    _rotation.Y += amount * delta;
-                if (_keyboard[Key.Right])
-                    _rotation.Y -= amount * delta;
-                if (_keyboard[Key.Up])
-                    _rotation.X += amount * delta;
-                if (_keyboard[Key.Down])
-                    _rotation.X -= amount * delta;
-                if (_keyboard[Key.R])
-                {
-                    _rotation.Y = 45;
-                    _rotation.X = 160;
-                    _translation = new Vector2(0, -25);
-                }
+//                if (_keyboard[Key.Left])
+//                    _rotation.Y += amount * delta;
+//                if (_keyboard[Key.Right])
+//                    _rotation.Y -= amount * delta;
+//                if (_keyboard[Key.Up])
+//                    _rotation.X += amount * delta;
+//                if (_keyboard[Key.Down])
+//                    _rotation.X -= amount * delta;
+//                if (_keyboard[Key.R])
+//                {
+//                    _rotation.Y = 45;
+//                    _rotation.X = 160;
+//                    _translation = new Vector2(0, -25);
+//                }
+
+                if (_keyboard[Key.W])
+                    _camera.Move(Vector3.UnitY * delta);
+                if (_keyboard[Key.S])
+                    _camera.Move(-Vector3.UnitY * delta);
+                if (_keyboard[Key.A])
+                    _camera.Move(-Vector3.UnitX * delta);
+                if (_keyboard[Key.D])
+                    _camera.Move(Vector3.UnitX * delta);
             }
 
             _renderEngine.Update();
@@ -135,25 +146,21 @@ namespace Worldshape.Window
                      ClearBufferMask.StencilBufferBit);
 
             _updateTimeAccumulator += e.Time;
-            var partialTicks = _updateTimeAccumulator / TargetUpdatePeriod;
+            var partialTicks = (float)(_updateTimeAccumulator / TargetUpdatePeriod);
 
             // Reload the projection matrix
             var aspectRatio = Width / (float)Height;
             var zoom = (float)(_prevZoom + (_zoom - _prevZoom) * partialTicks);
             var scale = new Vector3(4 * (1 / zoom), -4 * (1 / zoom), 4 * (1 / zoom));
-            var rotX = _prevRotation.X + (_rotation.X - _prevRotation.X) * partialTicks;
-            var rotY = _prevRotation.Y + (_rotation.Y - _prevRotation.Y) * partialTicks;
-            var transX = _prevTranslation.X + (_translation.X - _prevTranslation.X) * partialTicks;
-            var transY = _prevTranslation.Y + (_translation.Y - _prevTranslation.Y) * partialTicks;
+            var look = _prevLook + (_camera.GetForward() - _prevLook) * partialTicks;
+            var pos = _prevTranslation + (_camera.Position - _prevTranslation) * partialTicks;
 
             var mProjection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspectRatio, 1, 1024);
-            var mModel = Matrix4.LookAt(0, 128, 256, 0, 0, 0, 0, 1, 0);
-            var mTranslate = Matrix4.CreateTranslation((float)transX, (float)transY, 0);
+            var mModel = Matrix4.Identity; //Matrix4.LookAt(0, 0, 0, 0, 0, 0, 0, 1, 0);
             var mScale = Matrix4.CreateScale(scale);
-            var mRotX = Matrix4.CreateRotationX((float)(rotX / 180 * Math.PI));
-            var mRotY = Matrix4.CreateRotationY((float)(rotY / 180 * Math.PI));
+            var mCamera = Matrix4.LookAt(pos, pos + look, Vector3.UnitY);
             var mLocalTranslate = Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
-            var mView = mLocalTranslate * mRotY * mRotX * mScale * mTranslate;
+            var mView = mLocalTranslate * mCamera;
 
             _renderEngine.Render(mModel, mView, mProjection);
 
@@ -186,8 +193,8 @@ namespace Worldshape.Window
             }
             else
             {
-                _rotation.X -= e.YDelta / 2f;
-                _rotation.Y -= e.XDelta / 2f;
+                _camera.Rotation.X -= e.XDelta / 2f;
+                _camera.Rotation.Y -= e.YDelta / 2f;
             }
         }
     }
