@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
@@ -9,15 +10,16 @@ namespace Worldshape.Graphics
 {
     class Camera
     {
+        private const float AngleMax = 89.99f;
         public Vector3 Position = new Vector3(0, 0, -128);
         public Vector2 Rotation = new Vector2(0, 0);
 
         public Vector3 GetForward()
         {
-            if (Rotation.Y > 89)
-                Rotation.Y = 89;
-            if (Rotation.Y < -89)
-                Rotation.Y = -89;
+            if (Rotation.Y > AngleMax)
+                Rotation.Y = AngleMax;
+            if (Rotation.Y < -AngleMax)
+                Rotation.Y = -AngleMax;
 
             Vector3 cameraTargetVector;
             cameraTargetVector.X = (float)(Math.Sin(Rotation.X / 180 * Math.PI) * Math.Cos(Rotation.Y / 180 * Math.PI));

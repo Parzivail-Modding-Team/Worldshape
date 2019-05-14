@@ -35,8 +35,8 @@ namespace Worldshape
 			Lumberjack.Debug("Loading window");
 			new MainWindow(args)
             {
-                VSync = VSyncMode.On
-            }.Run(20);
+                VSync = VSyncMode.Off
+            }.Run();
 
             return 0;
         }

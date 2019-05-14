@@ -116,8 +116,8 @@ namespace Worldshape.Graphics
 
         public void CreateChunks()
         {
-            var chunkWidth = (int)(Math.Ceiling(_structure.Width / 16f) * 16);
-            var chunkLength = (int)(Math.Ceiling(_structure.Length / 16f) * 16);
+            var chunkWidth = (int)Math.Ceiling(_structure.Width / 16f);
+            var chunkLength = (int)Math.Ceiling(_structure.Length / 16f);
 
             Chunks = new Chunk[chunkWidth * chunkLength];
             
