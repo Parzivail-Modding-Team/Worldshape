@@ -116,8 +116,8 @@ namespace Worldshape.Window
                 var center = new Point(Width / 2, Height / 2);
 
                 // Calculate the offset of the mouse position
-                var deltaX = (mouse.X - _lastMousePos.X) * e.Time;
-                var deltaY = (mouse.Y - _lastMousePos.Y) * e.Time;
+                var deltaX = (mouse.X - _lastMousePos.X) * e.Time * 50;
+                var deltaY = (mouse.Y - _lastMousePos.Y) * e.Time * 50;
 
                 _lastMousePos = new Point(mouse.X, mouse.Y);
 
@@ -138,11 +138,8 @@ namespace Worldshape.Window
                      ClearBufferMask.StencilBufferBit);
 
             // Reload the projection matrix
-            var aspectRatio = Width / (float)Height;
-            var look = _camera.GetForward();
-            var pos = _camera.Position;
-
-            var mProjection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspectRatio, 1, 1024);
+            var aspectRatio = Width / (float) Height;
+            var mProjection = Matrix4.CreatePerspectiveFieldOfView((float)(_camera.FieldOfView / 180 * Math.PI), aspectRatio, 1, 1024);
             var mModel = Matrix4.Identity; //Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
             var mCamera = _camera.GetTranslationMatrix() * _camera.GetRotationMatrix();
             var mView = mCamera;
