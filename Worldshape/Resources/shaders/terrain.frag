@@ -26,7 +26,16 @@ void main()
 	vec4 samp = texture(atlas, fragTexCoord);
 	if(samp.a < 0.5)
 		discard;
-    color = vec4(samp.rgb * clamp(ambient + diffuse, 0, 1), samp.a);
+		
+	if (gl_FrontFacing)
+	{
+		color = vec4(samp.rgb * clamp(ambient + diffuse, 0, 1), samp.a);
+	}
+	else
+	{
+		// show darkened texture on opposing face
+		color = vec4(samp.rgb * clamp(ambient + diffuse, 0, 1) * 0.2, samp.a);
+	}	
 
     color += vec4(vec3((noise.r - 0.5) / 255.0), 0.0);
 }

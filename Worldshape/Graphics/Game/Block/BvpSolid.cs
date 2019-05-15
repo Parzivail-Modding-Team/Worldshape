@@ -32,26 +32,26 @@ namespace Worldshape.Graphics.Game.Block
 
 			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, blockAtlas))
 			{
-				vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.PosX), tc01);
-				vbi.Append(new Vertex(x + 1, y, z + 1), new Vertex(FaceDir.PosX), tc11);
-				vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosX), tc10);
 				vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.PosX), tc00);
+                vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosX), tc10);
+                vbi.Append(new Vertex(x + 1, y, z + 1), new Vertex(FaceDir.PosX), tc11);
+                vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.PosX), tc01);
 			}
 
 			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, blockAtlas))
 			{
-				vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegX), tc01);
-				vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.NegX), tc11);
-				vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.NegX), tc10);
-				vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegX), tc00);
+                vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegX), tc01);
+                vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.NegX), tc11);
+                vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.NegX), tc10);
+                vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegX), tc00);
 			}
 
 			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosY, blockAtlas))
 			{
-				vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.PosY), tc01);
-				vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.PosY), tc11);
-				vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosY), tc10);
 				vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.PosY), tc00);
+                vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosY), tc10);
+                vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.PosY), tc11);
+                vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.PosY), tc01);
 			}
 
 			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegY, blockAtlas))
@@ -69,13 +69,13 @@ namespace Worldshape.Graphics.Game.Block
 				vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosZ), tc10);
 				vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.PosZ), tc00);
 			}
-
+            
 			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegZ, blockAtlas))
 			{
-				vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegZ), tc01);
-				vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.NegZ), tc11);
-				vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.NegZ), tc10);
 				vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegZ), tc00);
+                vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.NegZ), tc10);
+                vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.NegZ), tc11);
+                vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegZ), tc01);
 			}
 		}
 	}

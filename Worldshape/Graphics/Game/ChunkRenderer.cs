@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using MinecraftStructureLib.Core;
 using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Game.Block;
@@ -21,10 +22,10 @@ namespace Worldshape.Graphics.Game
 		{
 			var block = structure[x, y, z];
 			var renderType = blockAtlas[block.Id].Properties.Render;
-			if (!VertexProducers.TryGetValue(renderType, out var producer))
-				return;
+            if (!VertexProducers.TryGetValue(renderType, out var producer))
+                return;
 
-			producer.Render(structure, x, y, z, blockAtlas, vbi);
+            producer.Render(structure, x, y, z, blockAtlas, vbi);
 		}
 	}
 }

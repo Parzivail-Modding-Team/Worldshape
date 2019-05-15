@@ -60,7 +60,7 @@ namespace Worldshape.Extensions
 
             var data = blockAtlas[block.Id];
             if (data == null)
-                return false;
+                return true;
 
             switch (data.Properties.Render)
             {

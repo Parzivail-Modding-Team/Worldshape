@@ -1,4 +1,5 @@
 ﻿using MinecraftStructureLib.Core;
+using OpenTK;
 using Worldshape.Graphics.Buffer;
 using Worldshape.Graphics.Primitive;
 using Worldshape.Graphics.Texture;
@@ -29,15 +30,17 @@ namespace Worldshape.Graphics.Game.Block
 				tc11 = new Uv(tex.MaxU - d, tex.MaxV - d);
 			}
 
-			vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.NegZ), tc01);
-			vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.NegZ), tc11);
-			vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.NegZ), tc10);
-			vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.NegZ), tc00);
-
-			vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegZ), tc01);
-			vbi.Append(new Vertex(x + 1, y, z + 1), new Vertex(FaceDir.NegZ), tc11);
-			vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.NegZ), tc10);
-			vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegZ), tc00);
+            var norm = (Vector3.UnitX + Vector3.UnitZ).Normalized();
+			vbi.Append(new Vertex(x, y, z + 1), new Vertex(norm.X, norm.Y, norm.Z), tc01);
+			vbi.Append(new Vertex(x + 1, y, z), new Vertex(norm.X, norm.Y, norm.Z), tc11);
+			vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(norm.X, norm.Y, norm.Z), tc10);
+			vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(norm.X, norm.Y, norm.Z), tc00);
+            
+            norm = (Vector3.UnitX - Vector3.UnitZ).Normalized();
+			vbi.Append(new Vertex(x, y, z), new Vertex(norm.X, norm.Y, norm.Z), tc01);
+			vbi.Append(new Vertex(x + 1, y, z + 1), new Vertex(norm.X, norm.Y, norm.Z), tc11);
+			vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(norm.X, norm.Y, norm.Z), tc10);
+			vbi.Append(new Vertex(x, y + 1, z), new Vertex(norm.X, norm.Y, norm.Z), tc00);
 		}
 	}
 }

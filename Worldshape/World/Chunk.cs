@@ -37,6 +37,9 @@ namespace Worldshape.World
                             continue;
 
                         var block = structure[x, y, z];
+                        if (block == null)
+                            continue;
+
                         var blockData = blockAtlas[block.Id];
                         if (blockData == null || blockData.Properties.Render == "none" || blockData.Textures.Count == 0)
                             continue;

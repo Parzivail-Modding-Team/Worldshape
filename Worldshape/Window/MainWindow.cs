@@ -139,7 +139,7 @@ namespace Worldshape.Window
 
             // Reload the projection matrix
             var aspectRatio = Width / (float) Height;
-            var mProjection = Matrix4.CreatePerspectiveFieldOfView((float)(_camera.FieldOfView / 180 * Math.PI), aspectRatio, 1, 1024);
+            var mProjection = Matrix4.CreatePerspectiveFieldOfView((float)(_camera.FieldOfView / 180 * Math.PI), aspectRatio, 0.01f, 1024);
             var mModel = Matrix4.Identity; //Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
             var mCamera = _camera.GetTranslationMatrix() * _camera.GetRotationMatrix();
             var mView = mCamera;
