@@ -224,24 +224,37 @@ namespace Worldshape.Graphics
             var mat = view * model;
             GL.LoadMatrix(ref mat);
 
+            GL.Disable(EnableCap.Lighting);
             GL.Color3(Color.Red);
             GL.Begin(PrimitiveType.LineStrip);
-            GL.Normal3(Vector3.UnitY);
             GL.Vertex3(0, 0, 0);
             GL.Vertex3(5, 0, 0);
             GL.End();
             GL.Color3(Color.LawnGreen);
             GL.Begin(PrimitiveType.LineStrip);
-            GL.Normal3(Vector3.UnitY);
             GL.Vertex3(0, 0, 0);
             GL.Vertex3(0, 5, 0);
             GL.End();
             GL.Color3(Color.Blue);
             GL.Begin(PrimitiveType.LineStrip);
-            GL.Normal3(Vector3.UnitY);
             GL.Vertex3(0, 0, 0);
             GL.Vertex3(0, 0, 5);
             GL.End();
+            
+            GL.Color3(Color.Black);
+            GL.Begin(PrimitiveType.Lines);
+            for (var x = -16; x <= 16; x++)
+            {
+                GL.Vertex3(x * 16, 0, -256);
+                GL.Vertex3(x * 16, 0, 256);
+            }
+            for (var z = -16; z <= 16; z++)
+            {
+                GL.Vertex3(-256, 0, z * 16);
+                GL.Vertex3(256, 0, z * 16);
+            }
+            GL.End();
+            GL.Enable(EnableCap.Lighting);
 
             GL.PopMatrix();
             _framebuffer.Release();
