@@ -16,11 +16,6 @@ namespace Worldshape.Graphics
 
         public Vector3 GetForward()
         {
-            if (Rotation.Y > AngleMax)
-                Rotation.Y = AngleMax;
-            if (Rotation.Y < -AngleMax)
-                Rotation.Y = -AngleMax;
-
             Vector3 cameraTargetVector;
             cameraTargetVector.X = (float)(Math.Sin(Rotation.X / 180 * Math.PI) * Math.Cos(Rotation.Y / 180 * Math.PI));
             cameraTargetVector.Y = (float)Math.Sin(Rotation.Y / 180 * Math.PI);
@@ -28,15 +23,21 @@ namespace Worldshape.Graphics
             return cameraTargetVector;
         }
 
+        public Matrix4 GetRotationMatrix()
+        {
+            return Matrix4.CreateRotationY(Rotation.X) * Matrix4.CreateRotationX(Rotation.Y);
+        }
+
+        public Matrix4 GetTranslationMatrix()
+        {
+            return Matrix4.CreateTranslation(Position);
+        }
+
         public void Move(Vector3 direction, float speed = 1)
         {
-            var forward = GetForward();
-            var offset = new Vector3();
-            offset += direction.X * new Vector3(-forward.Z, 0, forward.X);
-            offset += direction.Y * forward;
-            offset.Y += direction.Z;
-            offset.NormalizeFast();
-            Position += Vector3.Multiply(offset, speed);
+            var matrix = GetRotationMatrix();
+            var offset = matrix * new Vector4(direction);
+            Position += offset.Xyz * speed;
         }
     }
 }

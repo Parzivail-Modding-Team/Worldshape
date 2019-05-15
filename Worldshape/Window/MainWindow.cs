@@ -91,18 +91,18 @@ namespace Worldshape.Window
 
             // Compute input-based rotations
             var delta = (float)e.Time;
-            var speed = _keyboard[Key.LShift] || _keyboard[Key.RShift] ? 0.04f : 0.01f;
+            var speed = _keyboard[Key.LShift] || _keyboard[Key.RShift] ? 40 : 10;
 
             if (Focused)
             {
                 if (_keyboard[Key.W])
-                    _camera.Move(Vector3.UnitY * delta, speed);
+                    _camera.Move(Vector3.UnitZ * delta, speed);
                 if (_keyboard[Key.S])
-                    _camera.Move(-Vector3.UnitY * delta, speed);
+                    _camera.Move(-Vector3.UnitZ * delta, speed);
                 if (_keyboard[Key.A])
-                    _camera.Move(-Vector3.UnitX * delta, speed);
-                if (_keyboard[Key.D])
                     _camera.Move(Vector3.UnitX * delta, speed);
+                if (_keyboard[Key.D])
+                    _camera.Move(-Vector3.UnitX * delta, speed);
 
                 if (_keyboard[Key.Escape])
                     Exit();
@@ -116,14 +116,14 @@ namespace Worldshape.Window
                 var center = new Point(Width / 2, Height / 2);
 
                 // Calculate the offset of the mouse position
-                var deltaX = (mouse.X - _lastMousePos.X) * e.Time * 100;
-                var deltaY = (mouse.Y - _lastMousePos.Y) * e.Time * 100;
+                var deltaX = (mouse.X - _lastMousePos.X) * e.Time;
+                var deltaY = (mouse.Y - _lastMousePos.Y) * e.Time;
 
                 _lastMousePos = new Point(mouse.X, mouse.Y);
 
                 // Apply the camera pitch and yaw (we clamp the pitch in the camera class)
-                _camera.Rotation.X -= (float)deltaX;
-                _camera.Rotation.Y -= (float)deltaY; // reversed since y-coordinates range from bottom to top
+                _camera.Rotation.X += (float)deltaX;
+                _camera.Rotation.Y += (float)deltaY; // reversed since y-coordinates range from bottom to top
                 
                 center = PointToScreen(center);
                 Mouse.SetPosition(center.X, center.Y);
@@ -144,7 +144,7 @@ namespace Worldshape.Window
 
             var mProjection = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspectRatio, 1, 1024);
             var mModel = Matrix4.Identity; //Matrix4.CreateTranslation(-_structure.Width / 2f, -_structure.Height / 2f, -_structure.Length / 2f);
-            var mCamera = Matrix4.LookAt(pos, pos + look, Vector3.UnitY);
+            var mCamera = _camera.GetTranslationMatrix() * _camera.GetRotationMatrix();
             var mView = mCamera;
 
             _renderEngine.Render(mModel, mView, mProjection);
