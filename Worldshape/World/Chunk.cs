@@ -29,23 +29,26 @@ namespace Worldshape.World
         {
             _vbi.Reset();
 
-            for (var x = X * 16; x < X * 16 + 16; x++)
-                for (var y = 0; y < 256; y++)
-                    for (var z = Z * 16; z < Z * 16 + 16; z++)
-                    {
-                        if (!structure.Contains(x, y, z))
-                            continue;
+            for (var pass = 0; pass <= 1; pass++)
+            {
+	            for (var x = X * 16; x < X * 16 + 16; x++)
+	            for (var y = 0; y < 256; y++)
+	            for (var z = Z * 16; z < Z * 16 + 16; z++)
+	            {
+		            if (!structure.Contains(x, y, z))
+			            continue;
 
-                        var block = structure[x, y, z];
-                        if (block == null)
-                            continue;
+		            var block = structure[x, y, z];
+		            if (block == null)
+			            continue;
 
-                        var blockData = blockAtlas[block.Id];
-                        if (blockData == null || blockData.Properties.Render == "none" || blockData.Textures.Count == 0)
-                            continue;
+		            var blockData = blockAtlas[block.Id];
+		            if (blockData == null || blockData.Properties.Render == "none" || blockData.Textures.Count == 0)
+			            continue;
 
-						ChunkRenderer.Render(structure, x, y, z, blockAtlas, _vbi);
-                    }
+		            ChunkRenderer.Render(structure, x, y, z, blockAtlas, _vbi, pass);
+	            }
+            }
         }
 
         /// <summary>

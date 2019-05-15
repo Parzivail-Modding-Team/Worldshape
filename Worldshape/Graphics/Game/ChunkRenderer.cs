@@ -13,19 +13,20 @@ namespace Worldshape.Graphics.Game
 		{
 			{"solid", BvpSolid.Instance},
 			{"transparent", BvpSolid.Instance},
-			{"liquid", BvpSolid.Instance},
+			{"liquid", BvpLiquid.Instance},
 			{"column", BvpColumn.Instance},
 			{"cross", BvpCross.Instance}
 		};
 
-		public static void Render(Structure structure, int x, int y, int z, BlockAtlas blockAtlas, ChunkBuffer vbi)
+		public static void Render(Structure structure, int x, int y, int z, BlockAtlas blockAtlas, ChunkBuffer vbi, int pass)
 		{
 			var block = structure[x, y, z];
 			var renderType = blockAtlas[block.Id].Properties.Render;
             if (!VertexProducers.TryGetValue(renderType, out var producer))
                 return;
 
-            producer.Render(structure, x, y, z, blockAtlas, vbi);
+            if (producer.ShouldRenderInPass(pass))
+	            producer.Render(structure, x, y, z, blockAtlas, vbi);
 		}
 	}
 }

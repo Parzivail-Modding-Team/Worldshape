@@ -7,5 +7,6 @@ namespace Worldshape.Graphics.Game
 	internal interface IBlockVertexProducer
 	{
 		void Render(Structure structure, int x, int y, int z, BlockAtlas blockAtlas, ChunkBuffer vbi);
+		bool ShouldRenderInPass(int pass);
 	}
 }

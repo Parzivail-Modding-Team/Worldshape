@@ -45,6 +45,41 @@ namespace Worldshape.Extensions
             return structure.IsTransparent(x + face.X, y + face.Y, z + face.Z, blockAtlas);
         }
 
+        public static Block GetBordering(this Structure structure, int x, int y, int z, FaceDir face)
+        {
+            switch (face.Facing)
+            {
+                case FaceDir.Dir.PosX:
+                    if (x == structure.Width - 1)
+                        return null;
+                    break;
+                case FaceDir.Dir.NegX:
+                    if (x == 0)
+                        return null;
+                    break;
+                case FaceDir.Dir.PosY:
+                    if (y == structure.Height - 1)
+                        return null;
+                    break;
+                case FaceDir.Dir.NegY:
+                    if (y == 0)
+                        return null;
+                    break;
+                case FaceDir.Dir.PosZ:
+                    if (z == structure.Length - 1)
+                        return null;
+                    break;
+                case FaceDir.Dir.NegZ:
+                    if (z == 0)
+                        return null;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return structure[x + face.X, y + face.Y, z + face.Z];
+        }
+
         public static bool IsBorderingTransparent(this Structure structure, int x, int y, int z, BlockAtlas blockAtlas)
         {
             return structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, blockAtlas) || structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, blockAtlas) ||
@@ -66,6 +101,7 @@ namespace Worldshape.Extensions
             {
                 case "none":
                 case "transparent":
+                case "liquid":
                 case "cross":
                 case "fence":
                 case "skinny":

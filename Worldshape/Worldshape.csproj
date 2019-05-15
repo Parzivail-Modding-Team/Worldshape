@@ -59,6 +59,7 @@
     <Compile Include="Graphics\Camera.cs" />
     <Compile Include="Graphics\Game\Block\BvpCross.cs" />
     <Compile Include="Graphics\Game\Block\BvpColumn.cs" />
+    <Compile Include="Graphics\Game\Block\BvpLiquid.cs" />
     <Compile Include="Graphics\Game\Block\BvpSolid.cs" />
     <Compile Include="Graphics\Game\ChunkRenderer.cs" />
     <Compile Include="Graphics\Game\IBlockVertexProducer.cs" />

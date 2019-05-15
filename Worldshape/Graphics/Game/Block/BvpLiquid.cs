@@ -6,9 +6,9 @@ using Worldshape.Graphics.Texture;
 
 namespace Worldshape.Graphics.Game.Block
 {
-	class BvpSolid : IBlockVertexProducer
+	class BvpLiquid : IBlockVertexProducer
 	{
-		public static readonly BvpSolid Instance = new BvpSolid();
+		public static readonly BvpLiquid Instance = new BvpLiquid();
 
 		public void Render(Structure structure, int x, int y, int z, BlockAtlas blockAtlas, ChunkBuffer vbi)
 		{
@@ -30,7 +30,14 @@ namespace Worldshape.Graphics.Game.Block
 				tc11 = new Uv(tex.MaxU - d, tex.MaxV - d);
 			}
 
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, blockAtlas))
+			var blockPosX = structure.GetBordering(x, y, z, FaceDir.PosX);
+			var blockNegX = structure.GetBordering(x, y, z, FaceDir.NegX);
+			var blockPosY = structure.GetBordering(x, y, z, FaceDir.PosY);
+			var blockNegY = structure.GetBordering(x, y, z, FaceDir.NegY);
+			var blockPosZ = structure.GetBordering(x, y, z, FaceDir.PosZ);
+			var blockNegZ = structure.GetBordering(x, y, z, FaceDir.NegZ);
+
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosX, blockAtlas) && block != blockPosX)
 			{
 				vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.PosX), tc00);
                 vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosX), tc10);
@@ -38,7 +45,7 @@ namespace Worldshape.Graphics.Game.Block
                 vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.PosX), tc01);
 			}
 
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, blockAtlas))
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegX, blockAtlas) && block != blockNegX)
 			{
                 vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegX), tc01);
                 vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.NegX), tc11);
@@ -46,7 +53,7 @@ namespace Worldshape.Graphics.Game.Block
                 vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegX), tc00);
 			}
 
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosY, blockAtlas))
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosY, blockAtlas) && block != blockPosY)
 			{
 				vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.PosY), tc00);
                 vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(FaceDir.PosY), tc10);
@@ -54,7 +61,7 @@ namespace Worldshape.Graphics.Game.Block
                 vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.PosY), tc01);
 			}
 
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegY, blockAtlas))
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegY, blockAtlas) && block != blockNegY)
 			{
 				vbi.Append(new Vertex(x, y, z), new Vertex(FaceDir.NegY), tc01);
 				vbi.Append(new Vertex(x + 1, y, z), new Vertex(FaceDir.NegY), tc11);
@@ -62,7 +69,7 @@ namespace Worldshape.Graphics.Game.Block
 				vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.NegY), tc00);
 			}
 
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosZ, blockAtlas))
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.PosZ, blockAtlas) && block != blockPosZ)
 			{
 				vbi.Append(new Vertex(x, y, z + 1), new Vertex(FaceDir.PosZ), tc01);
 				vbi.Append(new Vertex(x + 1, y, z + 1), new Vertex(FaceDir.PosZ), tc11);
@@ -70,7 +77,7 @@ namespace Worldshape.Graphics.Game.Block
 				vbi.Append(new Vertex(x, y + 1, z + 1), new Vertex(FaceDir.PosZ), tc00);
 			}
             
-			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegZ, blockAtlas))
+			if (structure.IsBorderingTransparent(x, y, z, FaceDir.NegZ, blockAtlas) && block != blockNegZ)
 			{
 				vbi.Append(new Vertex(x, y + 1, z), new Vertex(FaceDir.NegZ), tc00);
                 vbi.Append(new Vertex(x + 1, y + 1, z), new Vertex(FaceDir.NegZ), tc10);
@@ -81,7 +88,7 @@ namespace Worldshape.Graphics.Game.Block
 
 		public bool ShouldRenderInPass(int pass)
 		{
-			return pass == 0;
+			return pass == 1;
 		}
 	}
 }

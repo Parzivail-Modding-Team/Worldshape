@@ -24,8 +24,14 @@ namespace Worldshape.Graphics
 			return Matrix4.CreateTranslation(Position);
 		}
 
-		public void Move(Vector3 direction, float speed = 1)
+		public void Move(Vector3 direction, float speed = 1, bool local = true)
 		{
+			if (!local)
+			{
+				Position += direction * speed;
+				return;
+			}
+
 			var matrix = GetRotationMatrix();
 			var offset = matrix * new Vector4(direction);
 			Position += offset.Xyz * speed;

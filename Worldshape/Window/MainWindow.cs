@@ -91,7 +91,7 @@ namespace Worldshape.Window
 
             // Compute input-based rotations
             var delta = (float)e.Time;
-            var speed = _keyboard[Key.LShift] || _keyboard[Key.RShift] ? 40 : 10;
+            var speed = _keyboard[Key.LControl] ? 40 : 10;
 
             if (Focused)
             {
@@ -103,6 +103,10 @@ namespace Worldshape.Window
                     _camera.Move(Vector3.UnitX * delta, speed);
                 if (_keyboard[Key.D])
                     _camera.Move(-Vector3.UnitX * delta, speed);
+                if (_keyboard[Key.Space])
+                    _camera.Move(-Vector3.UnitY * delta, speed, false);
+                if (_keyboard[Key.ShiftLeft])
+                    _camera.Move(Vector3.UnitY * delta, speed, false);
 
                 if (_keyboard[Key.Escape])
                     Exit();

@@ -42,5 +42,10 @@ namespace Worldshape.Graphics.Game.Block
 			vbi.Append(new Vertex(x + 1, y + 1, z + 1), new Vertex(norm.X, norm.Y, norm.Z), tc10);
 			vbi.Append(new Vertex(x, y + 1, z), new Vertex(norm.X, norm.Y, norm.Z), tc00);
 		}
+
+		public bool ShouldRenderInPass(int pass)
+		{
+			return pass == 0;
+		}
 	}
 }
